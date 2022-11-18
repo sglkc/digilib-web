@@ -31,6 +31,8 @@
 
 .Password input {
   width: -webkit-fill-available;
+  width: -moz-available;
+  width: fill-available;
 }
 
 .Password button {
