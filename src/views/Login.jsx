@@ -1,23 +1,25 @@
-import { useState } from 'react';
 import Button from '@/components/Button';
 import Input from '@/components/Input';
 import Password from '@/components/Password';
+import Logo from '@/assets/logo.png';
+import styles from './Login.module.css';
 
 export default function LoginView() {
-  const [count, setCount] = useState(0);
+  function submit(e) {
+    e.preventDefault();
+  }
 
   return (
-    <>
-      <h1>Digilib Jalan Rahmat</h1>
-      <Input type="text" placeholder="Test Input" />
-      <Password />
-      <a href="#">lupa kata sandi</a>
-      <Button onClick={() => setCount((count) => count + 1)}>
-        Button {count}
-      </Button>
-      <p>
-        Belum punya akun? <a href="#">Daftar Sekarang</a>
-      </p>
-    </>
+    <div className={styles.container}>
+      <img className={styles.logo} src={Logo} />
+      <form className={styles.column} onSubmit={submit}>
+        <h1 className="text-primary">Login</h1>
+        <Input type="email" placeholder="Email" required />
+        <Password />
+        <a className={styles.link} href="#">lupa kata sandi?</a>
+        <Button type="submit">Login</Button>
+        <p>Belum punya akun? <a href="#">Daftar Sekarang</a></p>
+      </form>
+    </div>
   );
 }

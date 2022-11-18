@@ -12,10 +12,11 @@ export default function PasswordComponent(props) {
       <Input
         placeholder="Password"
         type={visible ? 'text' : 'password'}
+        required
         {...props}
       />
-      <button onClick={() => setVisible(!visible)}>
-        <Icon path={visible ? mdiEye : mdiEyeOff} size="2rem" color="#666" />
+      <button type="button" onClick={() => setVisible(!visible)}>
+        <Icon path={visible ? mdiEye : mdiEyeOff} size="1.75rem" color="#666" />
       </button>
     </div>
   );

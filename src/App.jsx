@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import Router from '@/router/Router.jsx';
 import store from '@/store';
-import '@fontsource/nunito';
+import '@fontsource/nunito/variable.css';
 import './App.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
