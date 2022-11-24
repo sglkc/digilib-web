@@ -18,7 +18,7 @@ export default function LoginView() {
         <Password />
         <a className={styles.link} href="#">lupa kata sandi?</a>
         <Button type="submit">Login</Button>
-        <p>Belum punya akun? <a href="#">Daftar Sekarang</a></p>
+        <p>Belum punya akun? <a href="/register">Daftar Sekarang</a></p>
       </form>
     </div>
   );
