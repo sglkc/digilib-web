@@ -1,15 +1,24 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Etalase from '@/views/Etalase';
 import Login from '@/views/Login';
 import Register from '@/views/Register';
 
+const setTitle = (title) => (document.title = `${title} | Jalan Rahmat`);
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Login />
+    element: <Etalase />,
+    loader: () => setTitle('Digilib')
+  },
+  {
+    path: '/login',
+    element: <Login />,
+    loader: () => setTitle('Masuk')
   },
   {
     path: '/register',
-    element: <Register />
+    element: <Register />,
+    loader: () => setTitle('Daftar')
   },
 ]);
 

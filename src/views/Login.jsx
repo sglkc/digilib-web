@@ -1,7 +1,8 @@
+import Logo from '@/assets/logo.png';
+import AuthLayout from '@/layouts/Auth';
 import Button from '@/components/Button';
 import Input from '@/components/Input';
 import Password from '@/components/Password';
-import Logo from '@/assets/logo.png';
 import styles from './Login.module.css';
 
 export default function LoginView() {
@@ -10,7 +11,7 @@ export default function LoginView() {
   }
 
   return (
-    <div className={styles.container}>
+    <AuthLayout>
       <img className={styles.logo} src={Logo} />
       <form className={styles.column} onSubmit={submit}>
         <h1 className="text-primary">Login</h1>
@@ -20,6 +21,6 @@ export default function LoginView() {
         <Button type="submit">Login</Button>
         <p>Belum punya akun? <a href="/register">Daftar Sekarang</a></p>
       </form>
-    </div>
+    </AuthLayout>
   );
 }

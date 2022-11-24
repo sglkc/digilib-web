@@ -1,9 +1,10 @@
 import { useState } from 'react';
+import Logo from '@/assets/logo.png';
+import AuthLayout from '@/layouts/Auth';
 import Button from '@/components/Button';
 import Input from '@/components/Input';
 import Password from '@/components/Password';
 import RegisterPolicy from '@/components/RegisterPolicy';
-import Logo from '@/assets/logo.png';
 import styles from './Register.module.css';
 
 export default function RegisterView() {
@@ -14,7 +15,7 @@ export default function RegisterView() {
   }
 
   return (
-    <div className={styles.container}>
+    <AuthLayout>
       <div className={styles.policy}>
         <img className={styles.logo} src={Logo} />
         <RegisterPolicy />
@@ -41,8 +42,8 @@ export default function RegisterView() {
           </span>
         </label>
         <Button type="submit">Daftar</Button>
-        <p>Sudah punya akun? <a href="/">Silahkan Masuk</a></p>
+        <p>Sudah punya akun? <a href="/login">Silahkan Masuk</a></p>
       </form>
-    </div>
+    </AuthLayout>
   );
 }
