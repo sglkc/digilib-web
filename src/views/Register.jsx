@@ -17,7 +17,7 @@ export default function RegisterView() {
   return (
     <AuthLayout>
       <div className={styles.policy}>
-        <img className={styles.logo} src={Logo} />
+        <img className={styles.logo} src={Logo} alt="logo" />
         <RegisterPolicy />
       </div>
       <form className={styles.column} onSubmit={submit}>

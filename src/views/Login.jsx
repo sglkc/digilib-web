@@ -12,7 +12,7 @@ export default function LoginView() {
 
   return (
     <AuthLayout>
-      <img className={styles.logo} src={Logo} />
+      <img className={styles.logo} src={Logo} alt="logo" />
       <form className={styles.column} onSubmit={submit}>
         <h1 className="text-primary">Login</h1>
         <Input type="email" placeholder="Email" required />

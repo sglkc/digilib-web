@@ -7,6 +7,10 @@
   gap: 1rem;
 }
 
+.column h1 {
+  color: var(--primary-color);
+}
+
 .policy {
   background-color: #ffffff;
   flex: 50%;

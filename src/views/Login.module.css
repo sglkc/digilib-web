@@ -5,6 +5,10 @@
   gap: 1rem;
 }
 
+.column h1 {
+  color: var(--primary-color);
+}
+
 .logo {
   min-width: 200px;
   width: 25%;
