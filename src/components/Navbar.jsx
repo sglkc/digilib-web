@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import { Icon } from '@mdi/react';
 import {
   mdiAccountOutline,
@@ -10,9 +11,14 @@ import Logo from '@/assets/logo.png';
 import Button from '@/components/Button';
 import styles from './Navbar.module.css';
 
-export default function NavbarComponent({ style }) {
+export default function Navbar() {
+  const navbar = useSelector(state => state.navbar);
+
   return (
-    <nav className={styles.container} style={style}>
+    <nav
+      className={styles['nav-container']}
+      style={navbar.open ? { left: 0 } : {}}
+    >
       <img
         className={styles.logo}
         src={Logo}

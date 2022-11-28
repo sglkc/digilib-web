@@ -7,9 +7,9 @@ import './App.css';
 
 const root = document.getElementById('root').classList;
 const breakpoints = {
-  576: 'sm',
-  768: 'md',
-  992: 'lg'
+  576: 'xs',
+  768: 'sm',
+  992: 'md',
 };
 
 export default function App() {

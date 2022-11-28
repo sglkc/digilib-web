@@ -10,7 +10,7 @@
   gap: 5rem;
 }
 
-:global(.md) .layout-container {
+:global(.sm) .layout-container {
   flex-direction: column;
   gap: 2rem;
 }
