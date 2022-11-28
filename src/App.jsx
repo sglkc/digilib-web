@@ -16,10 +16,7 @@ export default function App() {
   const width = useWindowWidth({ fps: 15 });
 
   for (const px in breakpoints) {
-    if (width <= px)
-      root.add(breakpoints[px])
-    else
-      root.remove(breakpoints[px]);
+    root[width <= px ? 'add' : 'remove'](breakpoints[px]);
   }
 
   return (

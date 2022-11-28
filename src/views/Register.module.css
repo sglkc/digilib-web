@@ -5,10 +5,10 @@
   width: 40vw;
   max-width: 350px;
   gap: 1rem;
-}
 
-.column h1 {
-  color: var(--primary-color);
+  & h1 {
+    color: var(--primary-color);
+  }
 }
 
 .policy {
@@ -46,15 +46,17 @@
   gap: 0.5rem;
 }
 
-:global(.md) .container {
-  flex-direction: column;
-  gap: 2rem;
-}
+:global(.md) {
+  & .container {
+    flex-direction: column;
+    gap: 2rem;
+  }
 
-:global(.md) .column {
-  width: 100%;
-}
+  & .column {
+    width: 100%;
+  }
 
-:global(.md) .policy {
-  order: 2;
+  & .policy {
+    order: 2;
+  }
 }

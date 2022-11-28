@@ -1,6 +1,6 @@
 import { Button as style } from './styles.module.css';
 
-export default function ButtonComponent(props) {
+export default function Button(props) {
   const classes = [style, props.className || ''].join(' ');
   return (
     <>

@@ -4,7 +4,7 @@ import { mdiEye, mdiEyeOff } from '@mdi/js';
 import Input from './Input';
 import { Password as style } from './styles.module.css';
 
-export default function PasswordComponent(props) {
+export default function Password(props) {
   const [visible, setVisible] = useState(false);
 
   return (

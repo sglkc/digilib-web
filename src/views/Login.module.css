@@ -3,10 +3,10 @@
   flex-direction: column;
   flex-grow: 1;
   gap: 1rem;
-}
 
-.column h1 {
-  color: var(--primary-color);
+  & h1 {
+    color: var(--primary-color);
+  }
 }
 
 .logo {
@@ -25,22 +25,25 @@
   font-weight: normal;
 }
 
-:global(.md) .container {
-  flex-direction: column;
-  gap: 2rem;
+:global(.md) {
+  & .container {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  & .column {
+    width: 75%;
+  }
+
+  & .logo {
+    width: 50%;
+    max-width: 500px;
+    margin: auto;
+  }
 }
 
-:global(.md) .column {
-  width: 75%;
+:global(.sm) {
+  & .column {
+    width: 100%;
+  }
 }
-
-:global(.md) .logo {
-  width: 50%;
-  max-width: 500px;
-  margin: auto;
-}
-
-:global(.sm) .column {
-  width: 100%;
-}
-

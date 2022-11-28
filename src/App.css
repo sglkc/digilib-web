@@ -13,11 +13,13 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 
-  --border-radius: 8px;
+  --border-radius: 1rem;
   --primary-color: #FFB901;
   --breakpoint-lg: 992px;
   --breakpoint-md: 768px;
   --breakpoint-sm: 576px;
+
+  --nav-width: 250px;
 }
 
 body {

@@ -1,4 +1,7 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import {
+  createBrowserRouter,
+  RouterProvider as Provider
+} from 'react-router-dom';
 import Etalase from '@/views/Etalase';
 import Login from '@/views/Login';
 import Register from '@/views/Register';
@@ -22,6 +25,6 @@ const router = createBrowserRouter([
   },
 ]);
 
-export default function Provider() {
-  return <RouterProvider router={router} />;
+export default function RouterProvider() {
+  return <Provider router={router} />;
 };

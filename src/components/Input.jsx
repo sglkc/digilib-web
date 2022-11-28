@@ -1,7 +1,8 @@
 import { Input as style } from './styles.module.css';
 
-export default function InputComponent(props) {
+export default function Input(props) {
+  const classes = [style, props.className || ''].join(' ');
   return (
-    <input className={style} {...props} />
+    <input {...props} className={classes} />
   );
 }
