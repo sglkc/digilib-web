@@ -1,7 +1,46 @@
 .layout-container {
-  padding-left: var(--nav-width);
+  margin-left: var(--nav-width);
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
+}
+
+.titlebar {
+  position: sticky;
+  top: 0;
+  padding: 1.25rem 2rem;
+  background-image: url(/banner.png);
+  background-position-y: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  color: white;
+  font-size: 0.675rem;
+  font-weight: 700;
+  z-index: 100;
+
+  & button {
+    display: none;
+  }
+
+  & h1 {
+    flex-grow: 1;
+  }
+}
+
+.overlay {
+  background-color: #0000005f;
+  position: fixed;
+  inset: 0;
+  animation-name: fadein;
+  animation-duration: .35s;
+  z-index: 200;
+}
+
+.content-container {
+  padding: 1.5rem 2rem;
 }
 
 @keyframes fadein {
@@ -11,14 +50,16 @@
 
 :global(.sm) {
   & .layout-container {
-    padding-left: 0;
+    margin-left: 0;
   }
 
-  & .overlay {
-    background-color: #0000005f;
-    position: fixed;
-    inset: 0;
-    animation-name: fadein;
-    animation-duration: .35s;
+  & .titlebar button {
+    display: block;
+    padding: 1rem;
+    margin: -1.5rem -1rem;
+    margin-right: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
   }
 }

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Logo from '@/assets/logo.png';
 import AuthLayout from '@/layouts/Auth';
 import Button from '@/components/Button';
@@ -42,7 +43,7 @@ export default function RegisterView() {
           </span>
         </label>
         <Button type="submit">Daftar</Button>
-        <p>Sudah punya akun? <a href="/login">Silahkan Masuk</a></p>
+        <p>Sudah punya akun? <Link to="/login">Silahkan Masuk</Link></p>
       </form>
     </AuthLayout>
   );

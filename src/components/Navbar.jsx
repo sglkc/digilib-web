@@ -32,31 +32,31 @@ export default function Navbar() {
       </div>
       <hr />
       <div className={styles.list}>
-        <Button href="#">
+        <Button to="#">
           <Icon path={mdiAccountOutline} title="profil" size={1.125} />
           Informasi Akun
         </Button>
-        <Button href="#">
+        <Button to="#">
           <Icon path={mdiBellOutline} title="notifikasi" size={1.125} />
           Notifikasi
         </Button>
-        <Button href="#">
+        <Button to="#">
           <Icon path={mdiHistory} title="riwayat" size={1.125} />
           Riwayat
         </Button>
       </div>
       <hr />
       <div className={styles.list}>
-        <Button href="#">
+        <Button to="#">
           <Icon path={mdiChatProcessingOutline} title="feedback" size={1.125} />
           Umpan Balik
         </Button>
-        <Button href="#">
+        <Button to="/tentang">
           <Icon path={mdiInformationOutline} title="tentang" size={1.125} />
           Tentang Aplikasi
         </Button>
       </div>
-      <Button href="/login" className={styles.button}>Keluar</Button>
+      <Button to="/login" className={styles.button}>Keluar</Button>
     </nav>
   );
 }

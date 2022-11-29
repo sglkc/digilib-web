@@ -1,4 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { Icon } from '@mdi/react';
+import { mdiMenu } from '@mdi/js';
 import { toggleNavbar } from '@/store/NavbarReducer';
 import Navbar from '@/components/Navbar';
 import styles from './Default.module.css';
@@ -7,6 +9,7 @@ export default function DefaultLayout({ children }) {
   const overlay = useSelector(state => state.navbar.open);
   const dispatch = useDispatch();
   const setNavbar = (bool) => dispatch(toggleNavbar({ open: bool }));
+  const title = document.title.replace(' | Jalan Rahmat', '');
 
   return (
     <>
@@ -18,8 +21,15 @@ export default function DefaultLayout({ children }) {
       ></div>
       }
       <div className={styles['layout-container']}>
-        <button onClick={() => setNavbar(true)}>toggle navbar</button>
-        { children }
+        <div className={styles.titlebar}>
+          <button onClick={() => setNavbar(true)}>
+            <Icon path={mdiMenu} title="kembali" size={1.5} color="white" />
+          </button>
+          <h1>{ title }</h1>
+        </div>
+        <div className={styles['content-container']}>
+          { children }
+        </div>
       </div>
     </>
   );

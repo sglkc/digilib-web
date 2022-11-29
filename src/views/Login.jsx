@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Logo from '@/assets/logo.png';
 import AuthLayout from '@/layouts/Auth';
 import Button from '@/components/Button';
@@ -19,7 +20,7 @@ export default function LoginView() {
         <Password />
         <a className={styles.link} href="#">lupa kata sandi?</a>
         <Button type="submit">Login</Button>
-        <p>Belum punya akun? <a href="/register">Daftar Sekarang</a></p>
+        <p>Belum punya akun? <Link to="/register">Daftar Sekarang</Link></p>
       </form>
     </AuthLayout>
   );

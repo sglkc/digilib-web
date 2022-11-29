@@ -2,26 +2,32 @@ import {
   createBrowserRouter,
   RouterProvider as Provider
 } from 'react-router-dom';
-import Etalase from '@/views/Etalase';
-import Login from '@/views/Login';
-import Register from '@/views/Register';
+import EtalaseView from '@/views/Etalase';
+import LoginView from '@/views/Login';
+import RegisterView from '@/views/Register';
+import TentangView from '@/views/Tentang';
 
 const setTitle = (title) => (document.title = `${title} | Jalan Rahmat`);
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Etalase />,
-    loader: () => setTitle('Digilib')
+    element: <EtalaseView />,
+    loader: () => setTitle('Etalase'),
   },
   {
     path: '/login',
-    element: <Login />,
+    element: <LoginView />,
     loader: () => setTitle('Masuk')
   },
   {
     path: '/register',
-    element: <Register />,
+    element: <RegisterView />,
     loader: () => setTitle('Daftar')
+  },
+  {
+    path: '/tentang',
+    element: <TentangView />,
+    loader: () => setTitle('Tentang')
   },
 ]);
 
