@@ -4,7 +4,7 @@ import Logo from '@/assets/logo.png';
 import AuthLayout from '@/layouts/Auth';
 import Button from '@/components/Button';
 import Input from '@/components/Input';
-import Password from '@/components/Password';
+import PasswordInput from '@/components/PasswordInput';
 import RegisterPolicy from '@/components/RegisterPolicy';
 import styles from './Register.module.css';
 
@@ -33,7 +33,7 @@ export default function RegisterView() {
           onBlur={() => setDateInput('text')}
           required
         />
-        <Password />
+        <PasswordInput />
         <label className={styles.policies}>
           <input className={styles.input} type="checkbox" required />
           <span>

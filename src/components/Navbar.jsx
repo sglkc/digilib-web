@@ -1,3 +1,5 @@
+import { Fragment } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Icon } from '@mdi/react';
 import {
@@ -5,14 +7,59 @@ import {
   mdiChatProcessingOutline,
   mdiBellOutline,
   mdiHistory,
+  mdiHomeOutline,
   mdiInformationOutline
 } from '@mdi/js';
 import Logo from '@/assets/logo.png';
 import Button from '@/components/Button';
 import styles from './Navbar.module.css';
 
+const list = [
+  [
+    {
+      to: '/',
+      icon: mdiHomeOutline,
+      iconTitle: 'etalase',
+      text: 'Etalase'
+    },
+    {
+      to: '/account',
+      icon: mdiAccountOutline,
+      iconTitle: 'akun',
+      text: 'Informasi Akun'
+    },
+    {
+      to: '/notification',
+      icon: mdiBellOutline,
+      iconTitle: 'notifikasi',
+      text: 'Notifikasi'
+    },
+    {
+      to: '#',
+      icon: mdiHistory,
+      iconTitle: 'riwayat',
+      text: 'Riwayat'
+    },
+  ],
+  [
+    {
+      to: '/feedback',
+      icon: mdiChatProcessingOutline,
+      iconTitle: 'feedback',
+      text: 'Umpan Balik'
+    },
+    {
+      to: '/about',
+      icon: mdiInformationOutline,
+      iconTitle: 'tentang',
+      text: 'Tentang Aplikasi'
+    },
+  ],
+];
+
 export default function Navbar() {
   const navbar = useSelector(state => state.navbar);
+  const { pathname } = useLocation();
 
   return (
     <nav
@@ -30,32 +77,26 @@ export default function Navbar() {
         <h3>Muhammad Irawan</h3>
         <p>irawan@gmail.com</p>
       </div>
-      <hr />
-      <div className={styles.list}>
-        <Button to="#">
-          <Icon path={mdiAccountOutline} title="profil" size={1.125} />
-          Informasi Akun
-        </Button>
-        <Button to="#">
-          <Icon path={mdiBellOutline} title="notifikasi" size={1.125} />
-          Notifikasi
-        </Button>
-        <Button to="#">
-          <Icon path={mdiHistory} title="riwayat" size={1.125} />
-          Riwayat
-        </Button>
-      </div>
-      <hr />
-      <div className={styles.list}>
-        <Button to="#">
-          <Icon path={mdiChatProcessingOutline} title="feedback" size={1.125} />
-          Umpan Balik
-        </Button>
-        <Button to="/tentang">
-          <Icon path={mdiInformationOutline} title="tentang" size={1.125} />
-          Tentang Aplikasi
-        </Button>
-      </div>
+      { list.map((items, i) => (
+        <Fragment key={i}>
+          <hr />
+          <div className={styles.list}>
+            {
+              items.map((item, j) => (
+                <Button
+                  key={j}
+                  to={item.to}
+                  style={pathname === item.to ? { backgroundColor: '#3333331f' } : {}}
+                >
+                  <Icon path={item.icon} title={item.iconTitle} size={1.125} />
+                  {item.text}
+                </Button>
+              ))
+            }
+          </div>
+        </Fragment>
+      ))
+      }
       <Button to="/login" className={styles.button}>Keluar</Button>
     </nav>
   );

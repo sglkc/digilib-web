@@ -3,7 +3,7 @@ import Logo from '@/assets/logo.png';
 import AuthLayout from '@/layouts/Auth';
 import Button from '@/components/Button';
 import Input from '@/components/Input';
-import Password from '@/components/Password';
+import PasswordInput from '@/components/PasswordInput';
 import styles from './Login.module.css';
 
 export default function LoginView() {
@@ -17,7 +17,7 @@ export default function LoginView() {
       <form className={styles.column} onSubmit={submit}>
         <h1 className="text-primary">Login</h1>
         <Input type="email" placeholder="Email" required />
-        <Password />
+        <PasswordInput />
         <a className={styles.link} href="#">lupa kata sandi?</a>
         <Button type="submit">Login</Button>
         <p>Belum punya akun? <Link to="/register">Daftar Sekarang</Link></p>

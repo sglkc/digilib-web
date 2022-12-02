@@ -4,13 +4,13 @@ import { mdiEye, mdiEyeOff } from '@mdi/js';
 import Input from './Input';
 import { Password as style } from './styles.module.css';
 
-export default function Password(props) {
+export default function PasswordInput(props) {
   const [visible, setVisible] = useState(false);
 
   return (
     <div className={style}>
       <Input
-        placeholder="Password"
+        placeholder="Kata Sandi"
         type={visible ? 'text' : 'password'}
         required
         {...props}

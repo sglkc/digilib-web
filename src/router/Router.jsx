@@ -2,10 +2,13 @@ import {
   createBrowserRouter,
   RouterProvider as Provider
 } from 'react-router-dom';
+import LoginView from '@/views/Auth/Login';
+import RegisterView from '@/views/Auth/Register';
 import EtalaseView from '@/views/Etalase';
-import LoginView from '@/views/Login';
-import RegisterView from '@/views/Register';
+import InformasiAkunView from '@/views/InformasiAkun';
+import NotifikasiView from '@/views/Notifikasi';
 import TentangView from '@/views/Tentang';
+import UmpanBalikView from '@/views/UmpanBalik';
 
 const setTitle = (title) => (document.title = `${title} | Jalan Rahmat`);
 const router = createBrowserRouter([
@@ -25,7 +28,22 @@ const router = createBrowserRouter([
     loader: () => setTitle('Daftar')
   },
   {
-    path: '/tentang',
+    path: '/account',
+    element: <InformasiAkunView />,
+    loader: () => setTitle('Informasi Akun'),
+  },
+  {
+    path: '/notification',
+    element: <NotifikasiView />,
+    loader: () => setTitle('Notifikasi')
+  },
+  {
+    path: '/feedback',
+    element: <UmpanBalikView />,
+    loader: () => setTitle('Umpan Balik')
+  },
+  {
+    path: '/about',
     element: <TentangView />,
     loader: () => setTitle('Tentang')
   },

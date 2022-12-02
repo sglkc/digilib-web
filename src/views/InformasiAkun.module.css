@@ -1,0 +1,39 @@
+.form-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.secondary {
+  color: #6a6a6a;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1;
+  gap: 1rem;
+  font-weight: 700;
+
+  &form {
+    padding-left: 2rem;
+    border-left: 2px solid silver;
+
+    & h2 {
+      font-size: 1.25rem;
+    }
+  }
+}
+
+:global(.md) {
+  & .form-container {
+    flex-direction: column;
+    gap: 2rem;
+
+    & form {
+      padding-top: 2rem;
+      padding-left: 0;
+      border-top: 2px solid silver;
+      border-left: unset;
+    }
+  }
+}
