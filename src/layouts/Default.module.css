@@ -40,6 +40,7 @@
 }
 
 .content-container {
+  margin: 0 auto;
   padding: 1.5rem 2rem;
 }
 
@@ -51,6 +52,11 @@
 :global(.sm) {
   & .layout-container {
     margin-left: 0;
+  }
+
+  & .content-container {
+    margin: 0;
+    padding: 1.5rem;
   }
 
   & .titlebar button {

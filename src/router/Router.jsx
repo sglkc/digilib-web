@@ -9,6 +9,7 @@ import InformasiAkunView from '@/views/InformasiAkun';
 import NotifikasiView from '@/views/Notifikasi';
 import TentangView from '@/views/Tentang';
 import UmpanBalikView from '@/views/UmpanBalik';
+import RiwayatView from '@/views/Riwayat';
 
 const setTitle = (title) => (document.title = `${title} | Jalan Rahmat`);
 const router = createBrowserRouter([
@@ -36,6 +37,11 @@ const router = createBrowserRouter([
     path: '/notification',
     element: <NotifikasiView />,
     loader: () => setTitle('Notifikasi')
+  },
+  {
+    path: '/history',
+    element: <RiwayatView />,
+    loader: () => setTitle('Riwayat')
   },
   {
     path: '/feedback',

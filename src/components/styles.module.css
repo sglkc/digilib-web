@@ -15,6 +15,36 @@
   }
 }
 
+.CategoryScroller {
+  position: sticky;
+  top: 4rem;
+  margin: -1rem -1rem;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  background-color: var(--background-color);
+  overflow-x: auto;
+  z-index: 100;
+
+  & button {
+    padding: 0.5rem;
+    background: none;
+    color: grey;
+    border: none;
+    border-bottom: 4px transparent solid;
+    border-radius: 0;
+    font-weight: 800;
+    transition-property: color, border;
+
+    &:global(.selected), &:hover {
+      color: #292929;
+      border: none;
+      border-bottom: 4px orange solid;
+    }
+  }
+}
+
 .Input {
   border-radius: var(--border-radius);
   border: 2px solid transparent;

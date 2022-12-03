@@ -35,7 +35,7 @@ const list = [
       text: 'Notifikasi'
     },
     {
-      to: '#',
+      to: '/history',
       icon: mdiHistory,
       iconTitle: 'riwayat',
       text: 'Riwayat'
