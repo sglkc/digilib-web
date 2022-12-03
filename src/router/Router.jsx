@@ -10,13 +10,45 @@ import NotifikasiView from '@/views/Notifikasi';
 import TentangView from '@/views/Tentang';
 import UmpanBalikView from '@/views/UmpanBalik';
 import RiwayatView from '@/views/Riwayat';
+import DefaultLayout from '@/layouts/Default';
 
 const setTitle = (title) => (document.title = `${title} | Jalan Rahmat`);
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <EtalaseView />,
-    loader: () => setTitle('Etalase'),
+    element: <DefaultLayout />,
+    children: [
+      {
+        path: '/',
+        element: <EtalaseView />,
+        loader: () => setTitle('Etalase'),
+      },
+      {
+        path: '/account',
+        element: <InformasiAkunView />,
+        loader: () => setTitle('Informasi Akun'),
+      },
+      {
+        path: '/notification',
+        element: <NotifikasiView />,
+        loader: () => setTitle('Notifikasi')
+      },
+      {
+        path: '/history',
+        element: <RiwayatView />,
+        loader: () => setTitle('Riwayat')
+      },
+      {
+        path: '/feedback',
+        element: <UmpanBalikView />,
+        loader: () => setTitle('Umpan Balik')
+      },
+      {
+        path: '/about',
+        element: <TentangView />,
+        loader: () => setTitle('Tentang')
+      },
+    ]
   },
   {
     path: '/login',
@@ -27,31 +59,6 @@ const router = createBrowserRouter([
     path: '/register',
     element: <RegisterView />,
     loader: () => setTitle('Daftar')
-  },
-  {
-    path: '/account',
-    element: <InformasiAkunView />,
-    loader: () => setTitle('Informasi Akun'),
-  },
-  {
-    path: '/notification',
-    element: <NotifikasiView />,
-    loader: () => setTitle('Notifikasi')
-  },
-  {
-    path: '/history',
-    element: <RiwayatView />,
-    loader: () => setTitle('Riwayat')
-  },
-  {
-    path: '/feedback',
-    element: <UmpanBalikView />,
-    loader: () => setTitle('Umpan Balik')
-  },
-  {
-    path: '/about',
-    element: <TentangView />,
-    loader: () => setTitle('Tentang')
   },
 ]);
 

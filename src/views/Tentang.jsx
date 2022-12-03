@@ -1,8 +1,6 @@
-import DefaultLayout from "@/layouts/Default";
-
 export default function TentangView() {
   return (
-    <DefaultLayout>
+    <>
       <p style={{ marginBottom: '1rem' }}>
         Aplikasi untuk koleksi karya dan pemikiran Allah yarham KH. Jalaluddin
         Rakhmat beserta penulis dan tokoh lain yang menelaah, menyebarkan, dan
@@ -26,6 +24,6 @@ export default function TentangView() {
         <li>Neurosains</li>
         <li>Do'a</li>
       </ul>
-    </DefaultLayout>
+    </>
   );
 }

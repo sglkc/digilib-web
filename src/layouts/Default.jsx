@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { Outlet } from 'react-router-dom';
 import { Icon } from '@mdi/react';
 import { mdiMenu } from '@mdi/js';
 import { toggleNavbar } from '@/store/NavbarReducer';
@@ -28,7 +29,7 @@ export default function DefaultLayout({ children }) {
           <h1>{ title }</h1>
         </div>
         <div className={styles['content-container']}>
-          { children }
+          <Outlet />
         </div>
       </div>
     </>

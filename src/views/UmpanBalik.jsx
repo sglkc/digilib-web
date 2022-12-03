@@ -1,10 +1,9 @@
 import { Icon } from '@mdi/react';
 import { mdiEmail } from '@mdi/js';
-import DefaultLayout from "@/layouts/Default";
 
 export default function UmpanBalikView() {
   return (
-    <DefaultLayout>
+    <>
       <p style={{ marginBottom: '1rem', fontWeight: 600 }}>
         Jangan ragu untuk menghubungi kami untuk pertanyaan Anda.
         Hubungi kami di kontak dibawah ini.
@@ -21,6 +20,6 @@ export default function UmpanBalikView() {
           </a>
         </div>
       </div>
-    </DefaultLayout>
+    </>
   );
 }

@@ -1,5 +1,4 @@
 import { Fragment } from "react";
-import DefaultLayout from "@/layouts/Default";
 import Button from "@/components/Button";
 import styles from './Notifikasi.module.css';
 
@@ -24,7 +23,7 @@ export default function NotifikasiView() {
   ];
 
   return (
-    <DefaultLayout>
+    <>
       <div className={styles.list}>
         { notifications.map((notification, i) => (
           <Fragment key={i}>
@@ -38,6 +37,6 @@ export default function NotifikasiView() {
         }
         <Button className={styles.button}>Hapus Semua Notifikasi</Button>
       </div>
-    </DefaultLayout>
+    </>
   );
 }

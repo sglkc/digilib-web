@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import Button from '@/components/Button';
 import Input from "@/components/Input";
-import DefaultLayout from "@/layouts/Default";
 import PasswordInput from "@/components/PasswordInput";
 import styles from './InformasiAkun.module.css';
 
@@ -9,7 +8,7 @@ export default function InformasiAkunView() {
   const [dateInput, setDateInput] = useState('text');
 
   return (
-    <DefaultLayout>
+    <>
       <div className={styles['form-container']}>
         <div className={styles.col}>
           <div>
@@ -46,6 +45,6 @@ export default function InformasiAkunView() {
           <Button type="submit">Perbarui Informasi Akun</Button>
         </form>
       </div>
-    </DefaultLayout>
+    </>
   );
 }
