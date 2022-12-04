@@ -5,7 +5,7 @@ import AuthLayout from '@/layouts/Auth';
 import Button from '@/components/Button';
 import Input from '@/components/Input';
 import PasswordInput from '@/components/PasswordInput';
-import ForgotPasswordModal from '@/components/Login/Modal';
+import ForgotPasswordModal from '@/components/Auth/Modal';
 import styles from './Login.module.css';
 
 export default function LoginView() {

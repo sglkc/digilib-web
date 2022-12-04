@@ -24,11 +24,7 @@ export default function BottomNavbar() {
           className={pathname === route ? styles.selected : ''}
           to={route}
         >
-          <Icon
-            path={icon}
-            title={name}
-            size={1.125}
-          />
+          <Icon path={icon} title={name} size={1.125} />
           <p>{ name }</p>
         </Link>
       ))

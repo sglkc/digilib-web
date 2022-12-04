@@ -10,7 +10,6 @@ export default function DefaultLayout({ children }) {
   const overlay = useSelector(state => state.navbar.open);
   const dispatch = useDispatch();
   const setNavbar = (bool) => dispatch(toggleNavbar({ open: bool }));
-  const title = document.title.replace(' | Jalan Rahmat', '');
 
   return (
     <>
@@ -24,9 +23,9 @@ export default function DefaultLayout({ children }) {
       <div className={styles['layout-container']}>
         <div className={styles.titlebar}>
           <button onClick={() => setNavbar(true)}>
-            <Icon path={mdiMenu} title="kembali" size={1.5} color="white" />
+            <Icon path={mdiMenu} title="Menu" size={1.5} color="white" />
           </button>
-          <h1>{ title }</h1>
+          <h1 id="title"></h1>
         </div>
         <div className={styles['content-container']}>
           <Outlet />

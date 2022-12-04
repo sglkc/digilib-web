@@ -5,7 +5,7 @@ import AuthLayout from '@/layouts/Auth';
 import Button from '@/components/Button';
 import Input from '@/components/Input';
 import PasswordInput from '@/components/PasswordInput';
-import RegisterPolicy from '@/components/RegisterPolicy';
+import RegisterPolicy from '@/components/Auth/Policy';
 import styles from './Register.module.css';
 
 export default function RegisterView() {

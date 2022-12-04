@@ -8,12 +8,21 @@ import EtalaseView from '@/views/Etalase';
 import ErrorView from '@/views/Error';
 import InformasiAkunView from '@/views/InformasiAkun';
 import NotifikasiView from '@/views/Notifikasi';
+import TandaiView from '@/views/Tandai';
 import TentangView from '@/views/Tentang';
 import UmpanBalikView from '@/views/UmpanBalik';
 import RiwayatView from '@/views/Riwayat';
 import DefaultLayout from '@/layouts/Default';
 
-const setTitle = (title) => (document.title = `${title} | Jalan Rahmat`);
+const setTitle = (title) => {
+  setTimeout(() => {
+    const topbar = document.getElementById('title');
+    if (topbar) topbar.innerText = title;
+  }, 100);
+
+  document.title = `${title} | Jalan Rahmat`;
+};
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -24,6 +33,11 @@ const router = createBrowserRouter([
         path: '/',
         element: <EtalaseView />,
         loader: () => setTitle('Etalase'),
+      },
+      {
+        path: '/bookmark',
+        element: <TandaiView />,
+        loader: () => setTitle('Tandai'),
       },
       {
         path: '/account',

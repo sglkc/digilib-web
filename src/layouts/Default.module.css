@@ -59,13 +59,17 @@
     padding: 1.5rem;
   }
 
-  & .titlebar button {
-    display: block;
-    padding: 1rem;
-    margin: -1.5rem -1rem;
-    margin-right: 0;
-    background: none;
-    border: none;
-    cursor: pointer;
+  & .titlebar {
+    padding: 1.25rem 1.5rem;
+
+    & button {
+      display: block;
+      padding: 1rem;
+      margin: -1.5rem -1rem;
+      margin-right: 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
   }
 }

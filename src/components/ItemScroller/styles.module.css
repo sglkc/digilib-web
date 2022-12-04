@@ -28,6 +28,7 @@
     width: 100px;
     height: 145px;
     object-fit: cover;
+    border-radius: 0.25rem;
   }
 }
 
@@ -104,5 +105,20 @@
     left: 0;
     right: 0;
     bottom: 0;
+  }
+}
+
+:global(.sm) {
+  & .scroller-container {
+    gap: 1rem;
+  }
+
+  & .item-container {
+    padding: 0.5rem;
+
+    & img {
+      width: 80px;
+      height: 125px;
+    }
   }
 }

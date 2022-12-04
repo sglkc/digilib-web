@@ -73,3 +73,24 @@
     cursor: pointer;
   }
 }
+
+.SortBy {
+  margin: 1.5rem -0.5rem;
+  margin-bottom: -0.5rem;
+  padding: 0.5rem 1rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  background: none;
+  border: none;
+  border-radius: var(--border-radius);
+  color: var(--text-color);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #0000000f;
+  }
+}
