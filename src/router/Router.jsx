@@ -7,11 +7,12 @@ import RegisterView from '@/views/Auth/Register';
 import EtalaseView from '@/views/Etalase';
 import ErrorView from '@/views/Error';
 import InformasiAkunView from '@/views/InformasiAkun';
+import JelajahiView from '@/views/Jelajahi';
 import NotifikasiView from '@/views/Notifikasi';
+import RiwayatView from '@/views/Riwayat';
 import TandaiView from '@/views/Tandai';
 import TentangView from '@/views/Tentang';
 import UmpanBalikView from '@/views/UmpanBalik';
-import RiwayatView from '@/views/Riwayat';
 import DefaultLayout from '@/layouts/Default';
 
 const setTitle = (title) => {
@@ -33,6 +34,11 @@ const router = createBrowserRouter([
         path: '/',
         element: <EtalaseView />,
         loader: () => setTitle('Etalase'),
+      },
+      {
+        path: '/explore',
+        element: <JelajahiView />,
+        loader: () => setTitle('Jelajahi'),
       },
       {
         path: '/bookmark',

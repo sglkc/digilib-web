@@ -1,9 +1,11 @@
-import styles from './styles.module.css';
+import { chip } from './styles.module.css';
 
-export default function Chip({ name }) {
+export default function Chip(props) {
+  const classes = [chip, props.className || ''].join(' ');
+
   return (
-    <div className={styles.chip}>
-      <p>{name}</p>
+    <div {...props} className={classes}>
+      <p>{ props.name }</p>
     </div>
   );
 }
