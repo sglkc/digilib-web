@@ -2,8 +2,8 @@
   padding: 1rem 0 4rem;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-around;
+  align-items: flex-start;
+  justify-content: space-between;
   gap: 1rem;
 }
 
@@ -13,6 +13,7 @@
   display: flex;
   justify-content: center;
   gap: 1rem;
+  flex-grow: 1;
   border-radius: var(--border-radius);
   cursor: pointer;
   width: 50%;
@@ -25,8 +26,8 @@
   }
 
   & img {
-    width: 100px;
-    height: 145px;
+    width: 90px;
+    height: 135px;
     object-fit: cover;
     border-radius: 0.25rem;
   }
@@ -42,7 +43,7 @@
 
   & h3 {
     padding-right: 2rem;
-    color: green;
+    color: var(--green-color);
   }
 
   & p {
@@ -66,6 +67,17 @@
   white-space: nowrap;
   font-size: 0.875rem;
   font-weight: 700;
+
+  &:global(.large) {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  &:global(.selected) {
+    background-color: orange;
+    color: snow;
+  }
 }
 
 .bookmark {
@@ -82,29 +94,17 @@
   & .scroller-container {
     margin: 0 -0.5rem;
     flex-direction: column;
+    align-items: center;
   }
 
   & .item-container {
     width: 100%;
     min-width: 100%;
     max-width: 100%;
-
-    & img {
-      width: 90px;
-      height: 135px;
-    }
-  }
-
-  & .item-detail {
-    padding-bottom: 2.5rem;
   }
 
   & .chip-container {
     flex-wrap: nowrap;
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
   }
 }
 
@@ -120,5 +120,16 @@
       width: 80px;
       height: 125px;
     }
+  }
+
+  & .item-detail {
+    padding-bottom: 3rem;
+  }
+
+  & .chip-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
   }
 }

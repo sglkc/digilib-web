@@ -50,7 +50,7 @@
 }
 
 .button {
-  background-color: lightslategray;
+  background-color: var(--green-color);
   margin-top: 0.5rem;
   text-align: center;
 }

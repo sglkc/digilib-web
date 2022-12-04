@@ -1,5 +1,5 @@
 import Button from './Button';
-import { CategoryScroller as style } from './styles.module.css';
+import { CategoryScroller as style } from './components.module.css';
 
 export default function CategoryScroller() {
   return (

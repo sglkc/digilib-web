@@ -1,35 +1,43 @@
-import Item from "./Item";
-import styles from './styles.module.css';
+import Item from "./ItemComponent";
+import styles from './ItemScroller.module.css';
 
 const items = [
   {
-    cover: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1332922051l/13563593.jpg',
+    title: 'Neuro Psikologi',
+    author: 'Jalaludin Rakhmat',
+    description:
+    'Ed ut perspiciatis unde omnis iste natus error sit voluptatem ' +
+    'accusantium doloremque laudantium.',
+    categories: ['Sains dan Pendidikan', 'Psikologi', 'Komunikasi', 'Neurosains'],
+    cover: 'http://cdn.medicalxpress.com/newman/gfx/news/2014/0318_cogsci-grades-orig.jpg',
+    media: 'https://filesamples.com/samples/audio/mp3/sample1.mp3',
+    type: 'audio',
+    bookmark: false,
+  },
+  {
     title: 'Doa Bukan Lampu Aladin',
-    author: 'Jalaluddin Rakhmat',
-    category: ['Doa', 'Agama'],
+    author: 'Jalaludin Rakhmat',
+    description:
+    'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut' +
+    'fugit, sed quia consequuntur magni dolored eos qui ratione voluptatem.',
+    categories: ['Doa', 'Agama'],
+    cover: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1332922051l/13563593.jpg',
+    media: 'https://upload.wikimedia.org/wikipedia/commons/a/a4/Placeholder.pdf',
+    type: 'book',
     bookmark: false,
   },
   {
-    cover: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.v-3L7X7L07odE4h-saoSOQHaKF%26pid%3DApi&f=1',
-    title: 'Meraih Cinta Ilahi',
-    author: 'Jalaluddin Rakhmat',
-    category: ['Agama'],
+    title: 'Neuro Psikologi',
+    author: 'Jalaludin Rakhmat',
+    description:
+    'Ed ut perspiciatis unde omnis iste natus error sit voluptatem ' +
+    'accusantium doloremque laudantium.',
+    categories: ['Sains dan Pendidikan', 'Psikologi', 'Komunikasi', 'Neurosains'],
+    cover: 'https://i.ytimg.com/vi/zxFWIa9mDIo/maxresdefault.jpg',
+    media: 'https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+    type: 'video',
     bookmark: false,
-  },
-  {
-    cover: 'https://img.yumpu.com/62913595/1/500x640/belajar-cerdas-belajar-berbasiskan-otak-pdfdrivecom-.jpg',
-    title: 'Belajar Cerdas: Belajar Berbasiskan Otak',
-    author: 'Jalaluddin Rakhmat',
-    category: ['Sains dan Pendidikan'],
-    bookmark: false,
-  },
-  {
-    cover: 'https://1.bp.blogspot.com/-VeshmUawE5c/YIFK8hNU-KI/AAAAAAAAB9k/uQkTlWXDMoE3t59K7iAzKzXbmfFTeNo2QCLcBGAsYHQ/s457/DAHULUKAN%2BAKHLAK%2BDI%2BATAS%2BFIQIH.jpg',
-    title: 'Dahulukan Akhlak Di Atas Fiqih',
-    author: 'Jalaluddin Rakhmat',
-    category: ['Agama'],
-    bookmark: false,
-  },
+  }
 ];
 
 export default function ItemScroller(/* { items } */) {

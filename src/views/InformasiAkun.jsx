@@ -42,7 +42,9 @@ export default function InformasiAkunView() {
             required
           />
           <PasswordInput placeholder="Kata Sandi Baru" />
-          <Button type="submit">Perbarui Informasi Akun</Button>
+          <Button className={styles.button} type="submit">
+            Perbarui Informasi Akun
+          </Button>
         </form>
       </div>
     </>

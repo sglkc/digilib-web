@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Button as style } from './styles.module.css';
+import { Button as style } from './components.module.css';
 
 export default function Button(props) {
   const classes = [style, props.className || ''].join(' ');

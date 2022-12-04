@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Icon from '@mdi/react';
 import { mdiEye, mdiEyeOff } from '@mdi/js';
 import Input from './Input';
-import { Password as style } from './styles.module.css';
+import { Password as style } from './components.module.css';
 
 export default function PasswordInput(props) {
   const [visible, setVisible] = useState(false);

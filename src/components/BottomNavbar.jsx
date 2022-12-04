@@ -17,7 +17,7 @@ export default function BottomNavbar() {
   const { pathname } = useLocation();
 
   return (
-    <div className={styles.container}>
+    <div className={styles['bottom-container']}>
       { items.map(({ name, icon, route }, i) => (
         <Link
           key={i}

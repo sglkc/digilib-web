@@ -24,6 +24,10 @@
   }
 }
 
+.button {
+  background-color: var(--green-color);
+}
+
 :global(.md) {
   & .form-container {
     flex-direction: column;

@@ -1,7 +1,7 @@
 import { mdiFormatAlignLeft } from '@mdi/js';
 import Icon from '@mdi/react';
 import { useState } from 'react';
-import { SortBy as style } from './styles.module.css';
+import { SortBy as style } from './components.module.css';
 
 export default function SortBy() {
   const [sort, setSort] = useState('Terbaru');

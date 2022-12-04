@@ -41,9 +41,10 @@ export default function JelajahiView() {
         { categories.map((name, i) => (
           <Chip
             key={i}
-            className={styles.chip + (selected.includes(i) ? ' selected' : '')}
             name={name}
             onClick={() => toggleCategory(i)}
+            selected={selected.includes(i)}
+            large={true}
           />
         ))
         }

@@ -1,6 +1,6 @@
 import Input from '@/components/Input';
-import Button from '../Button';
-import styles from './styles.module.css';
+import Button from '@/components/Button';
+import styles from './Auth.module.css';
 
 export default function ForgotPasswordModal({ setModal }) {
   return (
