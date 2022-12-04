@@ -57,7 +57,7 @@ const list = [
   ],
 ];
 
-export default function Navbar() {
+export default function Navbar({ onClick }) {
   const navbar = useSelector(state => state.navbar);
   const { pathname } = useLocation();
 
@@ -87,6 +87,7 @@ export default function Navbar() {
                   key={j}
                   to={item.to}
                   style={pathname === item.to ? { backgroundColor: '#3333331f' } : {}}
+                  onClick={onClick}
                 >
                   <Icon path={item.icon} title={item.iconTitle} size={1.125} />
                   {item.text}

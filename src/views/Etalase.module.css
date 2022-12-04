@@ -1,0 +1,21 @@
+.quote-container {
+  margin: -1.5rem -2rem 0;
+  padding: 2rem;
+  padding-top: 1.5rem;
+  background-image: url(/banner.png);
+  background-position-y: bottom;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: snow;
+  font-weight: 650;
+  line-height: 1.25rem;
+
+  & :last-child {
+    font-size: 0.925rem;
+  }
+}
+
+:global(.sm) .quote-container {
+  margin: -1.5rem -1.5rem 0;
+}

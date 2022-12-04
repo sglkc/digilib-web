@@ -14,7 +14,7 @@ export default function DefaultLayout({ children }) {
 
   return (
     <>
-      <Navbar />
+      <Navbar onClick={() => setNavbar(false)} />
       { overlay &&
       <div
         onClick={() => setNavbar(false)}

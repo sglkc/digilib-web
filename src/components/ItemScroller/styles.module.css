@@ -1,5 +1,5 @@
 .scroller-container {
-  padding: 1rem 0;
+  padding: 1rem 0 4rem;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
