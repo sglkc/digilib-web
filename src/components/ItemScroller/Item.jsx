@@ -1,20 +1,30 @@
+import { useState } from 'react';
+import Icon from '@mdi/react';
+import { mdiBookmark, mdiBookmarkOutline } from '@mdi/js';
 import Chip from './Chip';
 import styles from './styles.module.css';
 
 export default function Item({ item }) {
+  const { author, category, cover, title } = item;
+  const [bookmark, setBookmark] = useState(item.bookmark);
+
   return (
     <div className={styles['item-container']}>
-      <img
-        src="https://www.bukukita.com/babacms/displaybuku/51911_f.jpg"
-        width="100"
-      />
+      <img src={cover} width="100" />
       <div className={styles['item-detail']}>
-        <h3>Belajar Cerdas: Belajar Berbasiskan Otak</h3>
-        <p>Jalaluddin Rakhmat</p>
+        <h3>{ title }</h3>
+        <p>{ author }</p>
         <div className={styles['chip-container']}>
-          {['Doa', 'Agama', 'Sains dan Pendidikan', 'Jalaluddin Rakhmat', 'Ilmu Pengetahuan'].map((name, i) => <Chip key={i} name={name} />)}
-          <Chip name="Lihat Detail" />
+          {category.map((name, i) => <Chip key={i} name={name} />)}
         </div>
+        <button className={styles.bookmark} onClick={() => setBookmark(!bookmark)}>
+          <Icon
+            path={bookmark ? mdiBookmark : mdiBookmarkOutline}
+            title="tandai"
+            color="orange"
+            size={1.125}
+          />
+        </button>
       </div>
     </div>
   );

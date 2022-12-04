@@ -5,6 +5,7 @@ import {
 import LoginView from '@/views/Auth/Login';
 import RegisterView from '@/views/Auth/Register';
 import EtalaseView from '@/views/Etalase';
+import ErrorView from '@/views/Error';
 import InformasiAkunView from '@/views/InformasiAkun';
 import NotifikasiView from '@/views/Notifikasi';
 import TentangView from '@/views/Tentang';
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <DefaultLayout />,
+    errorElement: <ErrorView />,
     children: [
       {
         path: '/',

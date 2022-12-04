@@ -23,6 +23,7 @@
   margin-bottom: 0.5rem;
   text-align: right;
   font-weight: normal;
+  cursor: pointer;
 }
 
 :global(.sm) {

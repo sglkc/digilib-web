@@ -15,11 +15,19 @@
   gap: 1rem;
   border-radius: var(--border-radius);
   cursor: pointer;
+  width: 50%;
+  min-width: 50%;
   max-width: 50%;
   transition: background-color .15s ease;
 
   &:hover {
     background-color: #0000000f;
+  }
+
+  & img {
+    width: 100px;
+    height: 145px;
+    object-fit: cover;
   }
 }
 
@@ -27,10 +35,12 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
   font-weight: 700;
   min-width: 0;
 
   & h3 {
+    padding-right: 2rem;
     color: green;
   }
 
@@ -44,6 +54,7 @@
   padding: 0.25rem 0;
   display: flex;
   gap: 0.5rem;
+  flex-wrap: wrap;
   overflow-x: auto;
 }
 
@@ -54,10 +65,16 @@
   white-space: nowrap;
   font-size: 0.875rem;
   font-weight: 700;
+}
 
-  &:last-child {
-    background-color: orange;
-  }
+.bookmark {
+  padding: 0;
+  right: 0;
+  position: absolute;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
 
 :global(.md) {
@@ -67,10 +84,22 @@
   }
 
   & .item-container {
+    width: 100%;
+    min-width: 100%;
     max-width: 100%;
+
+    & img {
+      width: 90px;
+      height: 135px;
+    }
+  }
+
+  & .item-detail {
+    padding-bottom: 2.5rem;
   }
 
   & .chip-container {
+    flex-wrap: nowrap;
     position: absolute;
     left: 0;
     right: 0;
