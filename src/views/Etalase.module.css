@@ -2,8 +2,8 @@
   margin: -1.5rem -2rem 0;
   padding: 2rem;
   padding-top: 1.5rem;
-  background-image: url(/banner.png);
-  background-position-y: bottom;
+  background-image: url(/banner-2.png);
+  background-position-y: center;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;

@@ -1,4 +1,5 @@
 .layout-container {
+  position: relative;
   margin-left: var(--nav-width);
   display: flex;
   flex-direction: column;
@@ -12,9 +13,8 @@
   background-image: url(/banner.png);
   background-position-y: center;
   background-size: cover;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: space-between;
   gap: 0.5rem;
   color: white;
   font-size: 0.675rem;
@@ -26,7 +26,10 @@
   }
 
   & h1 {
-    flex-grow: 1;
+    max-width: 55vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
 
@@ -49,13 +52,16 @@
   to { opacity: 1}
 }
 
+:global(.md) .content-container {
+  margin: 0;
+}
+
 :global(.sm) {
   & .layout-container {
     margin-left: 0;
   }
 
   & .content-container {
-    margin: 0;
     padding: 1.5rem;
   }
 
@@ -70,6 +76,10 @@
       background: none;
       border: none;
       cursor: pointer;
+    }
+
+    & h1 {
+      max-width: 70vw;
     }
   }
 }

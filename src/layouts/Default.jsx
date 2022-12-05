@@ -6,7 +6,7 @@ import { toggleNavbar } from '@/store/NavbarReducer';
 import Navbar from '@/components/Navbar';
 import styles from './Default.module.css';
 
-export default function DefaultLayout({ children }) {
+export default function DefaultLayout() {
   const overlay = useSelector(state => state.navbar.open);
   const dispatch = useDispatch();
   const setNavbar = (bool) => dispatch(toggleNavbar({ open: bool }));

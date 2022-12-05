@@ -2,18 +2,19 @@ import {
   createBrowserRouter,
   RouterProvider as Provider
 } from 'react-router-dom';
+import DefaultLayout from '@/layouts/Default';
 import LoginView from '@/views/Auth/Login';
 import RegisterView from '@/views/Auth/Register';
 import EtalaseView from '@/views/Etalase';
 import ErrorView from '@/views/Error';
 import InformasiAkunView from '@/views/InformasiAkun';
+import ItemView from '@/views/Item/Item';
 import JelajahiView from '@/views/Jelajahi';
 import NotifikasiView from '@/views/Notifikasi';
 import RiwayatView from '@/views/Riwayat';
 import TandaiView from '@/views/Tandai';
 import TentangView from '@/views/Tentang';
 import UmpanBalikView from '@/views/UmpanBalik';
-import DefaultLayout from '@/layouts/Default';
 
 const setTitle = (title) => {
   setTimeout(() => {
@@ -26,6 +27,16 @@ const setTitle = (title) => {
 
 const router = createBrowserRouter([
   {
+    path: '/login',
+    element: <LoginView />,
+    loader: () => setTitle('Masuk')
+  },
+  {
+    path: '/register',
+    element: <RegisterView />,
+    loader: () => setTitle('Daftar')
+  },
+  {
     path: '/',
     element: <DefaultLayout />,
     errorElement: <ErrorView />,
@@ -34,6 +45,11 @@ const router = createBrowserRouter([
         path: '/',
         element: <EtalaseView />,
         loader: () => setTitle('Etalase'),
+      },
+      {
+        path: '/item',
+        element: <ItemView />,
+        loader: () => setTitle('Item'),
       },
       {
         path: '/explore',
@@ -71,16 +87,6 @@ const router = createBrowserRouter([
         loader: () => setTitle('Tentang')
       },
     ]
-  },
-  {
-    path: '/login',
-    element: <LoginView />,
-    loader: () => setTitle('Masuk')
-  },
-  {
-    path: '/register',
-    element: <RegisterView />,
-    loader: () => setTitle('Daftar')
   },
 ]);
 
