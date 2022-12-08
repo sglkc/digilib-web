@@ -16,6 +16,7 @@
 .scroller {
   display: flex;
   gap: 2rem;
+  max-width: 900px;
 
   & img {
     max-height: 20rem;
@@ -45,23 +46,23 @@
   }
 }
 
-.row {
+.row, .button {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 0.5rem;
   color: #6a6a6a;
+}
 
-  & button {
-    margin: 0;
-    padding: 0;
-    background: none;
-    border: none;
-    font-size: 1rem;
-    font-weight: 600;
-    font-family: inherit;
-    cursor: pointer;
-  }
+.button {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
 }
 
 .chips {
@@ -88,6 +89,7 @@
     top: 4rem;
     padding-top: 23rem;
     overflow-y: auto;
+    z-index: 100;
 
     & img {
       display: none;

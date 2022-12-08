@@ -44,7 +44,7 @@ export default function JelajahiView() {
             name={name}
             onClick={() => toggleCategory(i)}
             selected={selected.includes(i)}
-            large={true}
+            large="true"
           />
         ))
         }
