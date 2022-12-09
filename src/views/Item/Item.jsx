@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLoaderData, useLocation } from 'react-router-dom';
 import Icon from '@mdi/react';
 import { mdiBookmark, mdiBookmarkOutline, mdiShareVariant } from '@mdi/js';
 import Chip from '@/components/ItemScroller/Chip';
@@ -8,7 +8,8 @@ import Book from './Book';
 
 export default function ItemView() {
   const { state } = useLocation();
-  const { item } = state;
+  const loader = useLoaderData();
+  const { item } = state ?? loader;
   const { author, categories, description, cover, media, title, type } = item;
   const [bookmark, setBookmark] = useState(item.bookmark);
 

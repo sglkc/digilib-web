@@ -6,12 +6,12 @@ import Chip from './Chip';
 import styles from './ItemScroller.module.css';
 
 export default function Item({ item }) {
-  const { author, categories, cover, title } = item;
+  const { item_id, author, categories, cover, title } = item;
   const [bookmark, setBookmark] = useState(item.bookmark);
   const navigate = useNavigate();
 
   function gotoItem() {
-    navigate('/item', { state: { item } });
+    navigate('/item/' + item_id);
   }
 
   function toggleBookmark(e) {

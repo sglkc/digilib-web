@@ -15,6 +15,7 @@ import RiwayatView from '@/views/Riwayat';
 import TandaiView from '@/views/Tandai';
 import TentangView from '@/views/Tentang';
 import UmpanBalikView from '@/views/UmpanBalik';
+import { getItem } from './Loader';
 
 const setTitle = (title) => {
   setTimeout(() => {
@@ -47,9 +48,9 @@ const router = createBrowserRouter([
         loader: () => setTitle('Etalase'),
       },
       {
-        path: '/item',
+        path: '/item/:item_id',
         element: <ItemView />,
-        loader: () => setTitle('Item'),
+        loader: getItem,
       },
       {
         path: '/explore',

@@ -3,6 +3,7 @@ import styles from './ItemScroller.module.css';
 
 const items = [
   {
+    item_id: 1,
     title: 'Neuro Psikologi',
     author: 'Jalaludin Rakhmat',
     description:
@@ -15,6 +16,7 @@ const items = [
     bookmark: false,
   },
   {
+    item_id: 2,
     title: 'Doa Bukan Lampu Aladin',
     author: 'Jalaludin Rakhmat',
     description:
@@ -27,6 +29,7 @@ const items = [
     bookmark: false,
   },
   {
+    item_id: 3,
     title: 'Neuro Psikologi',
     author: 'Jalaludin Rakhmat',
     description:
@@ -40,7 +43,7 @@ const items = [
   }
 ];
 
-export default function ItemScroller(/* { items } */) {
+export default function ItemScroller() {
   return (
     <div className={styles['scroller-container']}>
       {items.map((item, i) => <Item key={i} item={item} />)}
