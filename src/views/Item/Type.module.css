@@ -117,3 +117,9 @@
     }
   }
 }
+
+:global(.react-player__preview) {
+  background-position: center top!important;
+  background-size: contain!important;
+  background-repeat: no-repeat!important;
+}

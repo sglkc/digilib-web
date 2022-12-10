@@ -5,6 +5,7 @@ import { mdiBookmark, mdiBookmarkOutline, mdiShareVariant } from '@mdi/js';
 import Chip from '@/components/ItemScroller/Chip';
 import Audio from './Audio';
 import Book from './Book';
+import Video from './Video';
 import styles from './Item.module.css';
 
 export default function ItemView() {
@@ -22,10 +23,18 @@ export default function ItemView() {
   return (
     <>
       <div className={styles.cover}>
-        <img src={cover} width="200" height="200" />
+        { type === 'video' ?
+          <Video cover={cover} media={media} />
+          :
+          <img src={cover} width="200" height="200" />
+        }
       </div>
       <div id="scroller" className={styles.scroller}>
-        <img src={cover} width="250" height="200" />
+        { type === 'video' ?
+          <Video className={styles.video} cover={cover} media={media} />
+          :
+          <img src={cover} width="250" height="200" />
+        }
         <div className={styles.container}>
           <div>
             <h2>{ title }</h2>

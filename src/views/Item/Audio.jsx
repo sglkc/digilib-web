@@ -13,13 +13,12 @@ import { Audio as className } from './Type.module.css';
 
 export default function Audio({ media }) {
   const defaultState = {
-    playing: false,
-    volume: 0.6,
-    played: 0,
-    loaded: 0,
     duration: 0,
-    loop: false,
+    loaded: 0,
+    played: 0,
+    playing: false,
     playbackRate: 1,
+    volume: 0.6,
     volumeIcon: mdiVolumeMedium
   };
 
@@ -90,10 +89,16 @@ export default function Audio({ media }) {
         url={media}
         height={0}
         width={0}
+        loop={false}
         config={{ file: { forceAudio: true } }}
+        duration={state.duration}
+        loaded={state.loaded}
+        played={state.played}
+        playing={state.playing}
+        playbackRate={state.playbackRate}
+        volume={state.volume}
         onProgress={(state) => setState(state)}
         onDuration={(duration) => setState({ duration })}
-        { ...state }
       />
       <div className="row">
         <button onClick={handleVolume}>

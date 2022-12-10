@@ -5,12 +5,20 @@
   background-position: center;
   text-align: center;
 
+  & div {
+    z-index: 500;
+  }
+
   & img {
     width: 100%;
     max-height: 20rem;
     object-fit: contain;
     object-position: center;
   }
+}
+
+:global(.md) .video {
+  display: none;
 }
 
 .scroller {
@@ -90,6 +98,10 @@
     padding-top: 23rem;
     overflow-y: auto;
     z-index: 100;
+
+    & * {
+      pointer-events: auto;
+    }
 
     & img {
       display: none;
