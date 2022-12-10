@@ -1,5 +1,5 @@
-import Button from '@/components/Button';
 import { useState } from 'react';
+import Button from '@/components/Button';
 import { Book as className } from './Type.module.css';
 
 export default function Book({ media }) {

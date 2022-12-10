@@ -33,7 +33,7 @@ async function getItem({ params }) {
       'accusantium doloremque laudantium.',
       categories: ['Sains dan Pendidikan', 'Psikologi', 'Komunikasi', 'Neurosains'],
       cover: 'https://i.ytimg.com/vi/zxFWIa9mDIo/maxresdefault.jpg',
-      media: 'https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+      media: 'https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/Big_Buck_Bunny_360_10s_1MB.mp4',
       type: 'video',
       bookmark: false,
     }

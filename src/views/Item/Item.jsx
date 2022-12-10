@@ -3,8 +3,9 @@ import { useLoaderData, useLocation } from 'react-router-dom';
 import Icon from '@mdi/react';
 import { mdiBookmark, mdiBookmarkOutline, mdiShareVariant } from '@mdi/js';
 import Chip from '@/components/ItemScroller/Chip';
-import styles from './Item.module.css';
+import Audio from './Audio';
 import Book from './Book';
+import styles from './Item.module.css';
 
 export default function ItemView() {
   const { state } = useLocation();
@@ -47,6 +48,7 @@ export default function ItemView() {
               />
             </button>
           </div>
+          { type === 'audio' && <Audio media={media} /> }
           { type === 'book' && <Book media={media} /> }
           <h3>Deskripsi Singkat</h3>
           <p>{ description }</p>

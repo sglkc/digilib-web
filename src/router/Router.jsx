@@ -24,6 +24,8 @@ const setTitle = (title) => {
   }, 100);
 
   document.title = `${title} | Jalan Rahmat`;
+
+  return null;
 };
 
 const router = createBrowserRouter([

@@ -19,7 +19,7 @@ export default function ErrorView() {
           : <h1>Terjadi error</h1>
       }
       { import.meta.env.DEV &&
-        <code>{ JSON.stringify(error, null, 1) }</code>
+        <code>{ error.toString() }</code>
       }
     </div>
 );
