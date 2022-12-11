@@ -9,7 +9,7 @@ import EtalaseView from '@/views/Etalase';
 import ErrorView from '@/views/Error';
 import InformasiAkunView from '@/views/InformasiAkun';
 import ItemView from '@/views/Item/Item';
-import JelajahiView from '@/views/Jelajahi';
+import JelajahiView from '@/views/Jelajahi/Jelajahi';
 import NotifikasiView from '@/views/Notifikasi';
 import RiwayatView from '@/views/Riwayat';
 import TandaiView from '@/views/Tandai';

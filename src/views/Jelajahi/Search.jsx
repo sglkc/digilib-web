@@ -1,16 +1,18 @@
-import { useRef, useState } from "react";
-import Button from "@/components/Button";
-import BottomNavbar from "@/components/BottomNavbar";
-import Chip from "@/components/ItemScroller/Chip";
-import Search from "@/components/Search";
-import styles from './Jelajahi.module.css';
+import { useRef, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import Button from '@/components/Button';
+import BottomNavbar from '@/components/BottomNavbar';
+import Chip from '@/components/ItemScroller/Chip';
+import Search from '@/components/Search';
+import styles from './Search.module.css';
 
 const dummy = [
   'Tafsir Al-Quran', 'Psikologi', 'Agama', 'Doa', 'Hadits', 'Komunikasi',
   'Neurosains', 'Sains dan Pendidikan', 'Fikih'
 ];
 
-export default function JelajahiView() {
+export default function JelajahiSearchView() {
+  const [params, setParams] = useSearchParams();
   const defaultCategories = useRef([...dummy]);
   const [categories, setCategories] = useState(defaultCategories.current);
   const [selected, setSelected] = useState([]);
@@ -33,6 +35,12 @@ export default function JelajahiView() {
     setCategories([...filtered]);
   }
 
+  function searchSelected() {
+    const mapped = selected.map(i => categories[i]).join();
+
+    setParams({ categories: mapped });
+  }
+
   return (
     <form className={styles.container} onSubmit={(e) => e.preventDefault()}>
       <p>Pilih kategori yang ingin Anda tampilkan</p>
@@ -50,7 +58,12 @@ export default function JelajahiView() {
         }
         { !categories.length && <h3>Kategori kosong!</h3> }
       </div>
-      <Button className={styles.button}>Cari Kategori</Button>
+      <Button
+        className={styles.button}
+        onClick={searchSelected}
+      >
+        Cari Kategori
+      </Button>
       <BottomNavbar />
     </form>
   );
