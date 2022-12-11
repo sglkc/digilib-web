@@ -1,4 +1,4 @@
-import Icon from '@mdi/react';
+import { Icon } from '@mdi/react';
 import { mdiMagnify } from '@mdi/js';
 import Input from './Input';
 import { Search as style } from './components.module.css';

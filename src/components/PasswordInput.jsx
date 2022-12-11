@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Icon from '@mdi/react';
+import { Icon } from '@mdi/react';
 import { mdiEye, mdiEyeOff } from '@mdi/js';
 import Input from './Input';
 import { Password as style } from './components.module.css';

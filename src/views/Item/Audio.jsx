@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import ReactPlayer from 'react-player';
-import Icon from '@mdi/react';
+import { Icon } from '@mdi/react';
 import {
   mdiPause,
   mdiPlayOutline,

@@ -1,5 +1,5 @@
 import { useLocation, Link } from 'react-router-dom';
-import Icon from '@mdi/react';
+import { Icon } from '@mdi/react';
 import {
   mdiBookmarkOutline,
   mdiFolderOpenOutline,

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useLoaderData, useLocation } from 'react-router-dom';
-import Icon from '@mdi/react';
+import { Icon } from '@mdi/react';
 import { mdiBookmark, mdiBookmarkOutline, mdiShareVariant } from '@mdi/js';
 import Chip from '@/components/ItemScroller/Chip';
 import Audio from './Audio';

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Icon from '@mdi/react';
+import { Icon } from '@mdi/react';
 import { mdiBookmark, mdiBookmarkOutline } from '@mdi/js';
 import Chip from './Chip';
 import styles from './ItemScroller.module.css';
