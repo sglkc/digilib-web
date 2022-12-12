@@ -1,10 +1,10 @@
 import Unauthenticated from '@/func/Unauthenticated';
-import style from './Auth.module.css';
+import className from './Auth.module.css';
 
-export default function AuthLayout({ children }) {
+export default function AuthLayout({ children, style }) {
   return (
     <Unauthenticated>
-      <div className={style['layout-container']}>
+      <div className={className['layout-container']} style={style}>
         { children }
       </div>
     </Unauthenticated>

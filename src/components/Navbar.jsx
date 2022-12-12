@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Icon } from '@mdi/react';
 import {
@@ -60,6 +60,12 @@ const list = [
 export default function Navbar({ onClick }) {
   const navbar = useSelector(state => state.navbar);
   const { pathname } = useLocation();
+  const navigate = useNavigate();
+
+  function logout() {
+    document.cookie = 'TOKEN=;Max-Age=0';
+    navigate('/login');
+  }
 
   return (
     <nav
@@ -86,7 +92,9 @@ export default function Navbar({ onClick }) {
                 <Button
                   key={j}
                   to={item.to}
-                  style={pathname === item.to ? { backgroundColor: '#3333331f' } : {}}
+                  style={
+                    pathname === item.to ? { backgroundColor: '#3333331f' } : {}
+                  }
                   onClick={onClick}
                 >
                   <Icon path={item.icon} title={item.iconTitle} size={1.125} />
@@ -98,7 +106,7 @@ export default function Navbar({ onClick }) {
         </Fragment>
       ))
       }
-      <Button to="/login" className={styles.button}>Keluar</Button>
+      <Button onClick={logout} className={styles.button}>Keluar</Button>
     </nav>
   );
 }
