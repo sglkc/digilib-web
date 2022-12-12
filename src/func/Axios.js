@@ -1,25 +1,14 @@
-import { default as Axios } from 'axios';
+import { default as axios } from 'axios';
 
-const axios = Axios.create({
-  baseURL: 'https://digilib.jalanrahmat.id/api',
+const Axios = axios.create({
+  baseURL: import.meta.env.VITE_API_URL,
   headers: {
     'X-Requested-With': 'digilib',
-  }
+  },
+  withCredentials: true
 });
 
-axios.interceptors.request.use(
-  function (config) {
-    if (config.headers.Authorization) return config;
-
-    // TODO: get token
-    // config.headers.Authorization = 'Bearer ' + token
-  },
-  function (err) {
-    return Promise.reject(err);
-  }
-);
-
-axios.interceptors.response.use(
+Axios.interceptors.response.use(
   function (res) {
     res.data.status = res.status;
     return res;
@@ -29,8 +18,10 @@ axios.interceptors.response.use(
     err.data = err.response?.data;
     err.status = err.response?.status;
 
+    if (import.meta.env.DEV) console.error(err);
+
     return Promise.reject(err);
   }
 );
 
-export default axios;
+export default Axios;

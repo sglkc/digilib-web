@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 import { Icon } from '@mdi/react';
 import { mdiMenu } from '@mdi/js';
+import Authenticate from '@/func/Authenticate';
 import { toggleNavbar } from '@/store/NavbarReducer';
 import Navbar from '@/components/Navbar';
 import styles from './Default.module.css';
@@ -12,7 +13,7 @@ export default function DefaultLayout() {
   const setNavbar = (bool) => dispatch(toggleNavbar({ open: bool }));
 
   return (
-    <>
+    <Authenticate>
       <Navbar onClick={() => setNavbar(false)} />
       { overlay &&
       <div
@@ -31,6 +32,6 @@ export default function DefaultLayout() {
           <Outlet />
         </div>
       </div>
-    </>
+    </Authenticate>
   );
 }

@@ -10,7 +10,9 @@ export default function PasswordInput(props) {
   return (
     <div className={style}>
       <Input
+        name="password"
         placeholder="Kata Sandi"
+        autoComplete="true"
         type={visible ? 'text' : 'password'}
         required
         {...props}
