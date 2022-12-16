@@ -3,7 +3,8 @@
   padding: 2rem;
   padding-top: 1.5rem;
   background-image: url(/banner-2.png);
-  background-position-y: center;
+  background-position: right center;
+  background-size: cover;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;

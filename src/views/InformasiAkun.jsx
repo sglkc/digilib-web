@@ -72,7 +72,7 @@ export default function InformasiAkunView() {
             <p>{ user.tanggal_lahir }</p>
           </div>
           <a onClick={() => setPasswordView(!passwordView)}>
-            Ubah kata sandi
+            { passwordView ? 'Ubah informasi akun' : 'Ubah kata sandi' }
           </a>
         </div>
         <form

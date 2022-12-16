@@ -1,5 +1,6 @@
 import {
   createBrowserRouter,
+  Navigate,
   RouterProvider as Provider
 } from 'react-router-dom';
 import DefaultLayout from '@/layouts/Default';
@@ -17,23 +18,16 @@ import TentangView from '@/views/Tentang';
 import UmpanBalikView from '@/views/UmpanBalik';
 import { getItem } from './Loader';
 
-const setTitle = (title) => {
-  const topbar = document.getElementById('title');
-  if (topbar) topbar.innerText = title;
-
-  return document.title = `${title} | Jalan Rahmat`;
-};
-
 const router = createBrowserRouter([
   {
     path: '/login',
     element: <LoginView />,
-    loader: () => setTitle('Masuk')
+    loader: () => ({ title: 'Login' })
   },
   {
     path: '/register',
     element: <RegisterView />,
-    loader: () => setTitle('Daftar')
+    loader: () => ({ title: 'Daftar' })
   },
   {
     path: '/',
@@ -43,48 +37,61 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <EtalaseView />,
-        loader: () => setTitle('Etalase'),
+        loader: () => ({ title: 'Etalase' }),
       },
       {
-        path: '/item/:item_id',
-        element: <ItemView />,
-        loader: getItem,
+        path: '/item',
+        children: [
+          {
+            path: '/item/',
+            element: <Navigate to="/" replace />,
+          },
+          {
+            path: '/item/:item_id',
+            element: <ItemView />,
+            loader: getItem,
+          }
+        ]
       },
       {
         path: '/explore',
         element: <JelajahiView />,
-        loader: () => setTitle('Jelajahi'),
+        loader: () => ({ title: 'Etalase' }),
       },
       {
         path: '/bookmark',
         element: <TandaiView />,
-        loader: () => setTitle('Tandai'),
+        loader: () => ({ title: 'Tandai' }),
       },
       {
         path: '/account',
         element: <InformasiAkunView />,
-        loader: () => setTitle('Informasi Akun'),
+        loader: () => ({ title: 'Informasi Akun' }),
       },
       {
         path: '/notification',
         element: <NotifikasiView />,
-        loader: () => setTitle('Notifikasi')
+        loader: () => ({ title: 'Notifikasi' })
       },
       {
         path: '/history',
         element: <RiwayatView />,
-        loader: () => setTitle('Riwayat')
+        loader: () => ({ title: 'Riwayat' })
       },
       {
         path: '/feedback',
         element: <UmpanBalikView />,
-        loader: () => setTitle('Umpan Balik')
+        loader: () => ({ title: 'Umpan Balik' })
       },
       {
         path: '/about',
         element: <TentangView />,
-        loader: () => setTitle('Tentang')
+        loader: () => ({ title: 'Tentang' })
       },
+      {
+        path: '/*',
+        element: <Navigate to="/" replace />
+      }
     ]
   },
 ]);

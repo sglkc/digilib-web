@@ -39,7 +39,9 @@ async function getItem({ params }) {
     }
   ];
 
-  return { item: items[parseInt(item_id) - 1] };
+  const item = items[parseInt(item_id) - 1];
+
+  return { item, title: item.title };
 }
 
 export { getItem };

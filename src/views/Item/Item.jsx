@@ -15,11 +15,6 @@ export default function ItemView() {
   const { author, categories, description, cover, media, title, type } = item;
   const [bookmark, setBookmark] = useState(item.bookmark);
 
-  useEffect(() => {
-    document.title = title + ' | Jalan Rahmat';
-    document.getElementById('title').innerText = title;
-  }, [title]);
-
   return (
     <>
       <div className={styles.cover}>
