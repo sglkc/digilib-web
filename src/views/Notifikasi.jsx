@@ -1,26 +1,31 @@
-import { Fragment } from "react";
-import Button from "@/components/Button";
+import { Fragment, useEffect, useState } from 'react';
+import Axios from '@/func/Axios';
+import Button from '@/components/Button';
 import styles from './Notifikasi.module.css';
 
 export default function NotifikasiView() {
-  const notifications = [
-    {
-      date: '05 Agustus 2021',
-      text: 'Update Aplikasi telah tersedia'
-    },
-    {
-      date: '05 Agustus 2021',
-      text: 'Update Aplikasi telah tersedia'
-    },
-    {
-      date: '05 Agustus 2021',
-      text: 'Update Aplikasi telah tersedia'
-    },
-    {
-      date: '05 Agustus 2021',
-      text: 'Update Aplikasi telah tersedia'
-    },
-  ];
+  const [notifications, setNotifications] = useState([]);
+
+  useEffect(() => {
+    Axios
+      .get('/user/notifications')
+      .then((res) => {
+        const result = res.data.result.map((r) => ({
+          name: r.name,
+          text: r.text,
+          date: new Date(r.createdAt).toLocaleString()
+        }));
+
+        setNotifications(result);
+      })
+      .catch(() => false);
+  }, []);
+
+  function deleteAll() {
+    Axios.delete('/user/notifications')
+      .then(() => setNotifications([]))
+      .catch(() => false);
+  }
 
   return (
     <>
@@ -35,7 +40,13 @@ export default function NotifikasiView() {
           </Fragment>
         ))
         }
-        <Button className={styles.button}>Hapus Semua Notifikasi</Button>
+        { !notifications.length && <h3>Notifikasi kosong</h3> }
+        <Button
+          className={styles.button}
+          onClick={deleteAll}
+        >
+          Hapus Semua Notifikasi
+        </Button>
       </div>
     </>
   );

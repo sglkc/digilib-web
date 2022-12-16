@@ -18,14 +18,10 @@ import UmpanBalikView from '@/views/UmpanBalik';
 import { getItem } from './Loader';
 
 const setTitle = (title) => {
-  setTimeout(() => {
-    const topbar = document.getElementById('title');
-    if (topbar) topbar.innerText = title;
-  }, 100);
+  const topbar = document.getElementById('title');
+  if (topbar) topbar.innerText = title;
 
-  document.title = `${title} | Jalan Rahmat`;
-
-  return null;
+  return document.title = `${title} | Jalan Rahmat`;
 };
 
 const router = createBrowserRouter([
