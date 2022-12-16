@@ -45,8 +45,8 @@ export default function RegisterView() {
       </div>
       <form className={styles.column} onSubmit={submit}>
         <h1 className="text-primary">Daftar</h1>
-        <Input type="text" placeholder="Nama Lengkap" required />
-        <Input type="email" placeholder="Email" required />
+        <Input type="text" name="nama" placeholder="Nama Lengkap" required />
+        <Input type="email" name="email" placeholder="Email" required />
         <DateInput />
         <PasswordInput
           pattern=".{6,}"
