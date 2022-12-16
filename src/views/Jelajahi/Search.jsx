@@ -1,21 +1,26 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import Axios from '@/func/Axios';
 import Button from '@/components/Button';
 import BottomNavbar from '@/components/BottomNavbar';
 import Chip from '@/components/ItemScroller/Chip';
 import Search from '@/components/Search';
 import styles from './Search.module.css';
 
-const dummy = [
-  'Tafsir Al-Quran', 'Psikologi', 'Agama', 'Doa', 'Hadits', 'Komunikasi',
-  'Neurosains', 'Sains dan Pendidikan', 'Fikih'
-];
-
 export default function JelajahiSearchView() {
-  const [params, setParams] = useSearchParams();
-  const defaultCategories = useRef([...dummy]);
+  const [, setParams] = useSearchParams();
+  const defaultCategories = useRef([]);
   const [categories, setCategories] = useState(defaultCategories.current);
   const [selected, setSelected] = useState([]);
+
+  useEffect(() => {
+    Axios.get('/categories')
+      .then((res) => {
+        setCategories(res.data.result);
+        defaultCategories.current = res.data.result;
+      })
+      .catch(() => false);
+  }, []);
 
   function toggleCategory(index) {
     const temp = selected.includes(index)
