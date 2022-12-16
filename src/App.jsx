@@ -1,5 +1,5 @@
+import { useEffect } from 'react';
 import { Provider } from 'react-redux';
-import { useWindowWidth } from '@react-hook/window-size/throttled';
 import Router from '@/router/Router.jsx';
 import store from '@/store';
 import '@fontsource/nunito/variable.css';
@@ -12,12 +12,27 @@ const breakpoints = {
   992: 'md',
 };
 
-export default function App() {
-  const width = useWindowWidth({ fps: 15 });
+let fired = 0;
+
+function onWindowResize() {
+  if (fired > 3) return;
+
+  fired++;
+  const width = window.innerWidth;
 
   for (const px in breakpoints) {
     root[width <= px ? 'add' : 'remove'](breakpoints[px]);
   }
+
+  setTimeout(() => fired--, 250);
+}
+
+export default function App() {
+  useEffect(() => {
+    onWindowResize();
+    window.addEventListener('resize', onWindowResize);
+    return () => window.removeEventListener('resize', onWindowResize);
+  }, []);
 
   return (
     <Provider store={store}>

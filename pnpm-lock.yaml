@@ -4,7 +4,6 @@ specifiers:
   '@fontsource/nunito': ^4.5.11
   '@mdi/js': ^7.0.96
   '@mdi/react': ^1.6.1
-  '@react-hook/window-size': ^3.1.1
   '@reduxjs/toolkit': ^1.9.0
   '@types/react': ^18.0.24
   '@types/react-dom': ^18.0.8
@@ -24,7 +23,6 @@ dependencies:
   '@fontsource/nunito': 4.5.11
   '@mdi/js': 7.0.96
   '@mdi/react': 1.6.1
-  '@react-hook/window-size': 3.1.1_react@18.2.0
   '@reduxjs/toolkit': 1.9.1_k4ae6lp43ej6mezo3ztvx6pykq
   autoprefixer: 10.4.13_postcss@8.4.19
   axios: 1.2.1
@@ -397,51 +395,6 @@ packages:
     resolution: {integrity: sha512-4qZeDcluDFGFTWkHs86VOlHkm6gnKaMql13/gpIcUQ8kzxHgpj31NuCkD8abECVfbULJ3shc7Yt4HJ6Wu6SN4w==}
     dependencies:
       prop-types: 15.8.1
-    dev: false
-
-  /@react-hook/debounce/3.0.0_react@18.2.0:
-    resolution: {integrity: sha512-ir/kPrSfAzY12Gre0sOHkZ2rkEmM4fS5M5zFxCi4BnCeXh2nvx9Ujd+U4IGpKCuPA+EQD0pg1eK2NGLvfWejag==}
-    peerDependencies:
-      react: '>=16.8'
-    dependencies:
-      '@react-hook/latest': 1.0.3_react@18.2.0
-      react: 18.2.0
-    dev: false
-
-  /@react-hook/event/1.2.6_react@18.2.0:
-    resolution: {integrity: sha512-JUL5IluaOdn5w5Afpe/puPa1rj8X6udMlQ9dt4hvMuKmTrBS1Ya6sb4sVgvfe2eU4yDuOfAhik8xhbcCekbg9Q==}
-    peerDependencies:
-      react: '>=16.8'
-    dependencies:
-      react: 18.2.0
-    dev: false
-
-  /@react-hook/latest/1.0.3_react@18.2.0:
-    resolution: {integrity: sha512-dy6duzl+JnAZcDbNTfmaP3xHiKtbXYOaz3G51MGVljh548Y8MWzTr+PHLOfvpypEVW9zwvl+VyKjbWKEVbV1Rg==}
-    peerDependencies:
-      react: '>=16.8'
-    dependencies:
-      react: 18.2.0
-    dev: false
-
-  /@react-hook/throttle/2.2.0_react@18.2.0:
-    resolution: {integrity: sha512-LJ5eg+yMV8lXtqK3lR+OtOZ2WH/EfWvuiEEu0M3bhR7dZRfTyEJKxH1oK9uyBxiXPtWXiQggWbZirMCXam51tg==}
-    peerDependencies:
-      react: '>=16.8'
-    dependencies:
-      '@react-hook/latest': 1.0.3_react@18.2.0
-      react: 18.2.0
-    dev: false
-
-  /@react-hook/window-size/3.1.1_react@18.2.0:
-    resolution: {integrity: sha512-yWnVS5LKnOUIrEsI44oz3bIIUYqflamPL27n+k/PC//PsX/YeWBky09oPeAoc9As6jSH16Wgo8plI+ECZaHk3g==}
-    peerDependencies:
-      react: '>=16.8'
-    dependencies:
-      '@react-hook/debounce': 3.0.0_react@18.2.0
-      '@react-hook/event': 1.2.6_react@18.2.0
-      '@react-hook/throttle': 2.2.0_react@18.2.0
-      react: 18.2.0
     dev: false
 
   /@reduxjs/toolkit/1.9.1_k4ae6lp43ej6mezo3ztvx6pykq:
