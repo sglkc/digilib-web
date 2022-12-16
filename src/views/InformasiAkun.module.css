@@ -1,6 +1,15 @@
 .form-container {
   display: flex;
   justify-content: space-between;
+
+  & a {
+    color: var(--green-color);
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 .secondary {
@@ -8,15 +17,19 @@
 }
 
 .col {
+  padding-right: 2rem;
   display: flex;
   flex-direction: column;
   flex: 1 1;
   gap: 1rem;
   font-weight: 700;
+  overflow-wrap: anywhere;
+  min-width: 300px;
 
   &form {
     padding-left: 2rem;
     border-left: 2px solid silver;
+    min-width: 350px;
 
     & h2 {
       font-size: 1.25rem;
@@ -29,6 +42,11 @@
 }
 
 :global(.md) {
+  & .col {
+    padding-right: 0;
+    min-width: auto;
+  }
+
   & .form-container {
     flex-direction: column;
     gap: 2rem;

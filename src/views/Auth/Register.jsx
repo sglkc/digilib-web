@@ -50,7 +50,7 @@ export default function RegisterView() {
         <DateInput />
         <PasswordInput
           pattern=".{6,}"
-          title="Password minimal berisi 6 karakter"
+          title="Kata sandi minimal berisi 6 karakter"
         />
         <label className={styles.policies}>
           <input className={styles.input} type="checkbox" required />

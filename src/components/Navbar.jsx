@@ -59,6 +59,7 @@ const list = [
 
 export default function Navbar({ onClick }) {
   const navbar = useSelector(state => state.navbar);
+  const user = useSelector(state => state.user);
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
@@ -80,8 +81,8 @@ export default function Navbar({ onClick }) {
         height="128"
       />
       <div className={styles.profile}>
-        <h3>Muhammad Irawan</h3>
-        <p>irawan@gmail.com</p>
+        <h3>{ user.nama }</h3>
+        <p>{ user.email }</p>
       </div>
       { list.map((items, i) => (
         <Fragment key={i}>
