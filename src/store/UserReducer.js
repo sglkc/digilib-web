@@ -1,18 +1,27 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-  nama: '',
-  email: '',
-  tanggal_lahir: '',
-  token: ''
-};
+const initialState =
+  JSON.parse(localStorage.getItem('digilib'))
+  ||
+  {
+    nama: '',
+    email: '',
+    tanggal_lahir: ''
+  };
 
 export const User = createSlice({
   name: 'User',
   initialState,
   reducers: {
     setUser: (state, action) => {
-      state = Object.assign(state, action.payload);
+      const payload = {
+        nama: action.payload.nama,
+        email: action.payload.email,
+        tanggal_lahir: action.payload.tanggal_lahir,
+      };
+
+      state = Object.assign(state, payload);
+      localStorage.setItem('digilib', JSON.stringify(state));
     },
   },
 });

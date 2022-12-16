@@ -13,7 +13,7 @@ export default function DefaultLayout() {
   const setNavbar = (bool) => dispatch(toggleNavbar({ open: bool }));
 
   return (
-    <Authenticate>
+    <Authenticate auth={false}>
       <Navbar onClick={() => setNavbar(false)} />
       { overlay &&
       <div
