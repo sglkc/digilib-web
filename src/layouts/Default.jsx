@@ -1,14 +1,15 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Outlet, useMatches } from 'react-router-dom';
+import { Outlet, useMatches, useNavigate } from 'react-router-dom';
 import { Icon } from '@mdi/react';
-import { mdiMenu } from '@mdi/js';
+import { mdiMagnify, mdiMenu } from '@mdi/js';
 import Authenticate from '@/func/Authenticate';
 import { toggleNavbar } from '@/store/NavbarReducer';
 import Navbar from '@/components/Navbar';
 import styles from './Default.module.css';
 
 export default function DefaultLayout() {
+  const navigate = useNavigate();
   const { data } = useMatches().at(-1);
   const overlay = useSelector(state => state.navbar.open);
   const dispatch = useDispatch();
@@ -29,10 +30,15 @@ export default function DefaultLayout() {
       }
       <div className={styles['layout-container']}>
         <div className={styles.titlebar}>
-          <button onClick={() => setNavbar(true)}>
+          <button onClick={() => setNavbar(true)} data-menu="true">
             <Icon path={mdiMenu} title="Menu" size={1.5} color="white" />
           </button>
           <h1>{ data ? data.title : 'Digilib'}</h1>
+          { (data && data.search) &&
+            <button onClick={() => navigate('/search')}>
+              <Icon path={mdiMagnify} title="Cari" size={1.25} color="white" />
+            </button>
+          }
         </div>
         <div className={styles['content-container']}>
           <Outlet />

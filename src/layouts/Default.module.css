@@ -22,10 +22,22 @@
   z-index: 100;
 
   & button {
-    display: none;
+    padding: 1rem;
+    margin: -1.5rem -1rem;
+    margin-left: auto;
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    &[data-menu] {
+      margin: -1.5rem -1rem;
+      margin-right: 0;
+      display: none;
+    }
   }
 
   & h1 {
+    flex-grow: 1;
     max-width: 55vw;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -68,18 +80,12 @@
   & .titlebar {
     padding: 1.25rem 1.5rem;
 
-    & button {
+    & button[data-menu] {
       display: block;
-      padding: 1rem;
-      margin: -1.5rem -1rem;
-      margin-right: 0;
-      background: none;
-      border: none;
-      cursor: pointer;
     }
 
     & h1 {
-      max-width: 70vw;
+      max-width: 65vw;
     }
   }
 }

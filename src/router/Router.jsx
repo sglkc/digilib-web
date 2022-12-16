@@ -17,6 +17,7 @@ import TandaiView from '@/views/Tandai';
 import TentangView from '@/views/Tentang';
 import UmpanBalikView from '@/views/UmpanBalik';
 import { getItem } from './Loader';
+import PencarianView from '@/views/Pencarian';
 
 const router = createBrowserRouter([
   {
@@ -37,7 +38,12 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <EtalaseView />,
-        loader: () => ({ title: 'Etalase' }),
+        loader: () => ({ title: 'Etalase', search: true }),
+      },
+      {
+        path: '/search',
+        element: <PencarianView />,
+        loader: () => ({ title: 'Pencarian' }),
       },
       {
         path: '/item',
@@ -56,12 +62,12 @@ const router = createBrowserRouter([
       {
         path: '/explore',
         element: <JelajahiView />,
-        loader: () => ({ title: 'Etalase' }),
+        loader: () => ({ title: 'Etalase', search: true }),
       },
       {
         path: '/bookmark',
         element: <TandaiView />,
-        loader: () => ({ title: 'Tandai' }),
+        loader: () => ({ title: 'Tandai', search: true }),
       },
       {
         path: '/account',
@@ -76,7 +82,7 @@ const router = createBrowserRouter([
       {
         path: '/history',
         element: <RiwayatView />,
-        loader: () => ({ title: 'Riwayat' })
+        loader: () => ({ title: 'Riwayat', search: true })
       },
       {
         path: '/feedback',
