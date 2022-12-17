@@ -1,52 +1,78 @@
-import Item from "./ItemComponent";
+import { useEffect, useState } from 'react';
+import { useInView } from 'react-cool-inview';
+import { Icon } from '@mdi/react';
+import { mdiLoading } from '@mdi/js';
+import Axios from '@/func/Axios';
+import Item from './ItemComponent';
 import styles from './ItemScroller.module.css';
 
-const items = [
-  {
-    item_id: 1,
-    title: 'Neuro Psikologi',
-    author: 'Jalaludin Rakhmat',
-    description:
-    'Ed ut perspiciatis unde omnis iste natus error sit voluptatem ' +
-    'accusantium doloremque laudantium.',
-    categories: ['Sains dan Pendidikan', 'Psikologi', 'Komunikasi', 'Neurosains'],
-    cover: 'http://cdn.medicalxpress.com/newman/gfx/news/2014/0318_cogsci-grades-orig.jpg',
-    media: 'https://filesamples.com/samples/audio/mp3/sample1.mp3',
-    type: 'audio',
-    bookmark: false,
-  },
-  {
-    item_id: 2,
-    title: 'Doa Bukan Lampu Aladin',
-    author: 'Jalaludin Rakhmat',
-    description:
-    'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut' +
-    'fugit, sed quia consequuntur magni dolored eos qui ratione voluptatem.',
-    categories: ['Doa', 'Agama'],
-    cover: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1332922051l/13563593.jpg',
-    media: 'https://upload.wikimedia.org/wikipedia/commons/a/a4/Placeholder.pdf',
-    type: 'book',
-    bookmark: false,
-  },
-  {
-    item_id: 3,
-    title: 'Neuro Psikologi',
-    author: 'Jalaludin Rakhmat',
-    description:
-    'Ed ut perspiciatis unde omnis iste natus error sit voluptatem ' +
-    'accusantium doloremque laudantium.',
-    categories: ['Sains dan Pendidikan', 'Psikologi', 'Komunikasi', 'Neurosains'],
-    cover: 'https://i.ytimg.com/vi/zxFWIa9mDIo/maxresdefault.jpg',
-    media: 'https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
-    type: 'video',
-    bookmark: false,
-  }
-];
+export default function ItemScroller({ url }) {
+  url ??= '/items';
+  const LIMIT = 10;
+  const defaultState = {
+    count: 0,
+    items: [],
+    page: 1,
+    lastPage: false
+  };
 
-export default function ItemScroller() {
+  //const itemFilter = useSelector(state => state.itemFilter);
+  const itemFilter = { order: 'Terbaru', type: 'semua' };
+  const [state, setState] = useState(defaultState);
+  const { observe } = useInView({
+    rootMargin: '50px 0px',
+    onEnter: getItems
+  });
+
+  function getItems() {
+    if (state.lastPage) return;
+
+    Axios
+      .get(url, {
+        params: {
+          limit: LIMIT,
+          order: itemFilter.order === 'Terbaru' ? undefined : 'DESC',
+          page: state.page,
+          type: itemFilter.type === 'semua' ? undefined : itemFilter.type
+        }
+      })
+      .then((res) => {
+        const { count } = res.data;
+        const items = state.items.concat(res.data.result);
+        const page = state.page + 1;
+        const lastPage = items.length >= count;
+
+        setState({ ...defaultState, count, items, page, lastPage });
+      })
+      .catch((err) => {
+        if (err.data.message === 'PAGE_EMPTY') {
+          return setState({ ...defaultState, lastPage: true });
+        }
+
+        alert('Terjadi error, silahkan coba lagi di lain waktu');
+      });
+  }
+
+  useEffect(getItems, []);
+
   return (
     <div className={styles['scroller-container']}>
-      {items.map((item, i) => <Item key={i} item={item} />)}
+      { Boolean(state.count) &&
+          state.items.map((item, i) => <Item key={i} item={item} />)
+      }
+      { Boolean(!state.count && state.lastPage) &&
+        <strong className={styles.details}>Halaman ini kosong</strong>
+      }
+      { Boolean(state.count && state.lastPage) &&
+        <strong className={styles.details}>
+          Anda sudah berada di halaman terakhir
+        </strong>
+      }
+      { !state.lastPage &&
+        <span ref={observe} className={styles.details}>
+          <Icon className={styles.spin} path={mdiLoading} size={1.25} color="black" />
+        </span>
+      }
     </div>
   );
 }

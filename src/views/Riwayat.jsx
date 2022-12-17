@@ -6,7 +6,7 @@ export default function RiwayatView() {
   return (
     <>
       <CategoryScroller />
-      <ItemScroller />
+      <ItemScroller url="/histories" />
       <BottomNavbar />
     </>
   );

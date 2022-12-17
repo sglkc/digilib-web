@@ -24,7 +24,7 @@ export default function EtalaseView() {
       </div>
       <CategoryScroller />
       <SortBy />
-      <ItemScroller />
+      <ItemScroller url="/items" />
       <BottomNavbar />
     </>
   );

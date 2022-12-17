@@ -2,13 +2,15 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Icon } from '@mdi/react';
 import { mdiBookmark, mdiBookmarkOutline } from '@mdi/js';
+import Axios from '@/func/Axios';
 import Chip from './Chip';
 import styles from './ItemScroller.module.css';
 
 export default function Item({ item }) {
-  const { item_id, author, categories, cover, title } = item;
+  const { item_id, author, cover, title, Categories } = item;
   const [bookmark, setBookmark] = useState(item.bookmark);
   const navigate = useNavigate();
+  const coverUrl = Axios.getUri({ url: '/files/cover/' + cover });
 
   function gotoItem() {
     navigate('/item/' + item_id);
@@ -21,12 +23,12 @@ export default function Item({ item }) {
 
   return (
     <div className={styles['item-container']} onClick={gotoItem}>
-      <img src={cover} width="100" />
+      <img src={coverUrl} width="100" />
       <div className={styles['item-detail']}>
         <h3>{ title }</h3>
         <p>{ author }</p>
         <div className={styles['chip-container']}>
-          {categories.map((name, i) => <Chip key={i} name={name} />)}
+          { Categories.map(({ name }, i) => <Chip key={i} name={name} />) }
         </div>
         <button className={styles.bookmark} onClick={toggleBookmark}>
           <Icon

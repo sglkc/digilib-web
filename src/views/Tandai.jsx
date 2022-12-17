@@ -8,7 +8,7 @@ export default function TandaiView() {
     <>
       <CategoryScroller />
       <SortBy />
-      <ItemScroller />
+      <ItemScroller url="/bookmarks" />
       <BottomNavbar />
     </>
   );
