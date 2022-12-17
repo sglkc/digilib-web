@@ -45,7 +45,10 @@ export default function ItemScroller({ url }) {
         setState({ ...defaultState, count, items, page, lastPage });
       })
       .catch((err) => {
-        if (err.data.message === 'PAGE_EMPTY') {
+        if (
+          err.data.message === 'PAGE_EMPTY' ||
+          err.data.message === 'PAGE_NOT_FOUND'
+        ) {
           return setState({ ...defaultState, lastPage: true });
         }
 

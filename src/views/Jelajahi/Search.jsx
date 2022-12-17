@@ -41,6 +41,7 @@ export default function JelajahiSearchView() {
   }
 
   function searchSelected() {
+    // TODO: search selected on search doesnt include inavailable categoreis
     const mapped = selected.map(i => categories[i]).join();
 
     setParams({ categories: mapped });
@@ -63,10 +64,7 @@ export default function JelajahiSearchView() {
         }
         { !categories.length && <h3>Kategori kosong!</h3> }
       </div>
-      <Button
-        className={styles.button}
-        onClick={searchSelected}
-      >
+      <Button className={styles.button} onClick={searchSelected}>
         Cari Kategori
       </Button>
       <BottomNavbar />

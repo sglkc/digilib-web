@@ -62,7 +62,7 @@ const router = createBrowserRouter([
       {
         path: '/explore',
         element: <JelajahiView />,
-        loader: () => ({ title: 'Etalase', search: true }),
+        loader: () => ({ title: 'Jelajahi', search: true }),
       },
       {
         path: '/bookmark',

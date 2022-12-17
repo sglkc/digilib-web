@@ -1,9 +1,9 @@
 import { mdiFormatAlignLeft } from '@mdi/js';
 import { Icon } from '@mdi/react';
 import { useState } from 'react';
-import { SortBy as style } from './components.module.css';
+import { SortBy as className } from './components.module.css';
 
-export default function SortBy() {
+export default function SortBy({ style }) {
   const [sort, setSort] = useState('Terbaru');
 
   function toggleSort() {
@@ -13,7 +13,7 @@ export default function SortBy() {
   }
 
   return (
-    <button className={style} onClick={toggleSort}>
+    <button className={className} style={style} onClick={toggleSort}>
       <span>Urutkan: </span>
       <Icon path={mdiFormatAlignLeft} title="Urutkan" size={1} />
       <span>{ sort }</span>
