@@ -53,7 +53,10 @@ export default function ItemScroller({ url }) {
       });
   }
 
-  useEffect(getItems, []);
+  useEffect(() => {
+    setState({ ...defaultState });
+    getItems();
+  }, [url]);
 
   return (
     <div className={styles['scroller-container']}>
