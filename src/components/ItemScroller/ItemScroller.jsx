@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useInView } from 'react-cool-inview';
 import { Icon } from '@mdi/react';
 import { mdiLoading } from '@mdi/js';
@@ -16,8 +17,7 @@ export default function ItemScroller({ url }) {
     lastPage: false
   };
 
-  //const itemFilter = useSelector(state => state.itemFilter);
-  const itemFilter = { order: 'Terbaru', type: 'semua' };
+  const filter = useSelector(state => state.filter);
   const [state, setState] = useState(defaultState);
   const { observe } = useInView({
     rootMargin: '50px 0px',
@@ -31,9 +31,9 @@ export default function ItemScroller({ url }) {
       .get(url, {
         params: {
           limit: LIMIT,
-          order: itemFilter.order === 'Terbaru' ? undefined : 'DESC',
+          order: filter.order === 'Terbaru' ? undefined : 'DESC',
           page: state.page,
-          type: itemFilter.type === 'semua' ? undefined : itemFilter.type
+          type: filter.type === 'semua' ? undefined : filter.type
         }
       })
       .then((res) => {
@@ -59,7 +59,7 @@ export default function ItemScroller({ url }) {
   useEffect(() => {
     setState({ ...defaultState });
     getItems();
-  }, [url]);
+  }, [url, filter]);
 
   return (
     <div className={styles['scroller-container']}>

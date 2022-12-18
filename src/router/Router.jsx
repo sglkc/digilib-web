@@ -10,6 +10,7 @@ import EtalaseView from '@/views/Etalase';
 import ErrorView from '@/views/Error';
 import InformasiAkunView from '@/views/InformasiAkun';
 import ItemView from '@/views/Item/Item';
+import ItemNotFound from '@/views/Item/NotFound';
 import JelajahiView from '@/views/Jelajahi/Jelajahi';
 import NotifikasiView from '@/views/Notifikasi';
 import RiwayatView from '@/views/Riwayat';
@@ -55,6 +56,7 @@ const router = createBrowserRouter([
           {
             path: '/item/:item_id',
             element: <ItemView />,
+            errorElement: <ItemNotFound />,
             loader: getItem,
           }
         ]

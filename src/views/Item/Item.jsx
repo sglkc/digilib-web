@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useLoaderData, useLocation } from 'react-router-dom';
 import { Icon } from '@mdi/react';
 import { mdiBookmark, mdiBookmarkOutline, mdiShareVariant } from '@mdi/js';
+import Axios from '@/func/Axios';
 import Chip from '@/components/ItemScroller/Chip';
 import Audio from './Audio';
 import Book from './Book';
@@ -12,23 +13,24 @@ export default function ItemView() {
   const { state } = useLocation();
   const loader = useLoaderData();
   const { item } = state ?? loader;
-  const { author, categories, description, cover, media, title, type } = item;
+  const { author, description, cover, media, title, type, Categories } = item;
+  const coverUrl = Axios.getUri({ url: '/files/cover/' + cover });
   const [bookmark, setBookmark] = useState(item.bookmark);
 
   return (
     <>
       <div className={styles.cover}>
         { type === 'video' ?
-          <Video cover={cover} media={media} />
+          <Video cover={coverUrl} media={media} />
           :
-          <img src={cover} width="200" height="200" />
+          <img src={coverUrl} width="200" height="200" />
         }
       </div>
       <div id="scroller" className={styles.scroller}>
         { type === 'video' ?
-          <Video className={styles.video} cover={cover} media={media} />
+          <Video className={styles.video} cover={coverUrl} media={media} />
           :
-          <img src={cover} width="250" height="200" />
+          <img src={coverUrl} width="250" height="200" />
         }
         <div className={styles.container}>
           <div>
@@ -58,7 +60,9 @@ export default function ItemView() {
           <p>{ description }</p>
           <h3>Tagar</h3>
           <div className={styles.chips}>
-            { categories.map((n, i) => <Chip key={i} name={n} large="true" />)}
+            { Categories.map(({ name }, i) => (
+              <Chip key={i} name={name} large="true" />
+            ))}
           </div>
         </div>
       </div>
