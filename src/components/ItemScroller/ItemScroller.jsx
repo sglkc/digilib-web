@@ -7,7 +7,7 @@ import Axios from '@/func/Axios';
 import Item from './ItemComponent';
 import styles from './ItemScroller.module.css';
 
-export default function ItemScroller({ url }) {
+export default function ItemScroller({ bookmarksOnly, url }) {
   url ??= '/items';
   const LIMIT = 10;
   const defaultState = {
@@ -63,8 +63,13 @@ export default function ItemScroller({ url }) {
 
   return (
     <div className={styles['scroller-container']}>
-      { Boolean(state.count) &&
-          state.items.map((item, i) => <Item key={i} item={item} />)
+      { Boolean(state.count) && state.items.map((item, i) => (
+        <Item
+          key={i}
+          item={item}
+          onBookmark={(e) => { if (bookmarksOnly) e.remove() }}
+        />
+      ))
       }
       { Boolean(!state.count && state.lastPage) &&
         <strong className={styles.details}>Halaman ini kosong</strong>
@@ -76,7 +81,12 @@ export default function ItemScroller({ url }) {
       }
       { !state.lastPage &&
         <span ref={observe} className={styles.details}>
-          <Icon className={styles.spin} path={mdiLoading} size={1.25} color="black" />
+          <Icon
+            className={styles.spin}
+            path={mdiLoading}
+            size={1.25}
+            color="orange"
+          />
         </span>
       }
     </div>

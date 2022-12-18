@@ -1,7 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useLoaderData, useLocation } from 'react-router-dom';
 import { Icon } from '@mdi/react';
-import { mdiBookmark, mdiBookmarkOutline, mdiShareVariant } from '@mdi/js';
+import {
+  mdiBookmark, mdiBookmarkOutline, mdiTimerSand, mdiShareVariant
+} from '@mdi/js';
 import Axios from '@/func/Axios';
 import Chip from '@/components/ItemScroller/Chip';
 import Audio from './Audio';
@@ -15,7 +17,30 @@ export default function ItemView() {
   const { item } = state ?? loader;
   const { author, description, cover, media, title, type, Categories } = item;
   const coverUrl = Axios.getUri({ url: '/files/cover/' + cover });
-  const [bookmark, setBookmark] = useState(item.bookmark);
+  const [loading, setLoading] = useState(false);
+  const [bookmark, setBookmark] = useState(item.Bookmark);
+
+  function toggleBookmark() {
+    if (loading) return;
+
+    setLoading(true);
+    Axios.request({
+      url: '/bookmarks/' + item.item_id,
+      method: bookmark ? 'delete' : 'post'
+    })
+      .then((res) => {
+        const bookmark = res.data.message === 'ADDED_BOOKMARK';
+        setBookmark(bookmark);
+      })
+      .catch(() => {
+        Axios.get('/bookmarks/' + item_id).then((res) => {
+          const bookmark = res.data.message === 'ADDED_BOOKMARK';
+          setBookmark(bookmark);
+        })
+          .catch(() => false);
+      })
+      .finally(() => setLoading(false));
+  }
 
   return (
     <>
@@ -44,10 +69,13 @@ export default function ItemView() {
             </button>
             <button
               className={styles.button}
-              onClick={() => setBookmark(!bookmark)}
+              onClick={toggleBookmark}
             >
               <Icon
-                path={bookmark ? mdiBookmark : mdiBookmarkOutline}
+                path={
+                  loading ? mdiTimerSand :
+                    bookmark ? mdiBookmark : mdiBookmarkOutline
+                }
                 title="Tandai"
                 color="orange"
                 size={1.125}
