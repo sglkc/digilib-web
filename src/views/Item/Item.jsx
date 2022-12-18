@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLoaderData, useLocation } from 'react-router-dom';
 import { Icon } from '@mdi/react';
 import {
@@ -19,6 +19,12 @@ export default function ItemView() {
   const coverUrl = Axios.getUri({ url: '/files/cover/' + cover });
   const [loading, setLoading] = useState(false);
   const [bookmark, setBookmark] = useState(item.Bookmark);
+
+  useEffect(() => {
+    Axios.post('/histories/' + item.item_id)
+      .then(() => false)
+      .catch(() => false);
+  }, []);
 
   function toggleBookmark() {
     if (loading) return;
