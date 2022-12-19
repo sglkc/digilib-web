@@ -3,6 +3,8 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Icon } from '@mdi/react';
 import {
+  mdiAccountBox,
+  mdiAccountBoxOutline,
   mdiAccountOutline,
   mdiChatProcessingOutline,
   mdiBellOutline,
@@ -14,30 +16,26 @@ import Logo from '@/assets/logo.png';
 import Button from '@/components/Button';
 import styles from './Navbar.module.css';
 
-const list = [
+const userList = [
   [
     {
       to: '/',
       icon: mdiHomeOutline,
-      iconTitle: 'etalase',
       text: 'Etalase'
     },
     {
       to: '/account',
       icon: mdiAccountOutline,
-      iconTitle: 'akun',
       text: 'Informasi Akun'
     },
     {
       to: '/notification',
       icon: mdiBellOutline,
-      iconTitle: 'notifikasi',
       text: 'Notifikasi'
     },
     {
       to: '/history',
       icon: mdiHistory,
-      iconTitle: 'riwayat',
       text: 'Riwayat'
     },
   ],
@@ -45,23 +43,37 @@ const list = [
     {
       to: '/feedback',
       icon: mdiChatProcessingOutline,
-      iconTitle: 'feedback',
       text: 'Umpan Balik'
     },
     {
       to: '/about',
       icon: mdiInformationOutline,
-      iconTitle: 'tentang',
       text: 'Tentang Aplikasi'
     },
   ],
 ];
 
-export default function Navbar({ onClick }) {
+const adminList = [
+  [
+    {
+      to: '/admin',
+      icon: mdiHomeOutline,
+      text: 'Home'
+    },
+    {
+      to: '/account',
+      icon: mdiAccountOutline,
+      text: 'Informasi Akun'
+    },
+  ]
+];
+
+export default function Navbar({ admin, onClick }) {
   const navbar = useSelector(state => state.navbar);
   const user = useSelector(state => state.user);
   const { pathname } = useLocation();
   const navigate = useNavigate();
+  const list = admin ? adminList : userList;
 
   function logout() {
     document.cookie = 'TOKEN=;Max-Age=0';
@@ -84,6 +96,21 @@ export default function Navbar({ onClick }) {
         <h3>{ user.nama }</h3>
         <p>{ user.email }</p>
       </div>
+      { user.is_admin &&
+      <>
+        <hr />
+        <div className={styles.list}>
+          <Button to={admin ? '/' : '/admin'} onClick={onClick}>
+            <Icon
+              path={admin ? mdiAccountBoxOutline : mdiAccountBox}
+              title={admin ? 'User' : 'Admin'}
+              size={1.125}
+            />
+            { admin ? 'Keluar dari Admin' : 'Menu Admin' }
+          </Button>
+        </div>
+      </>
+      }
       { list.map((items, i) => (
         <Fragment key={i}>
           <hr />
@@ -98,7 +125,7 @@ export default function Navbar({ onClick }) {
                   }
                   onClick={onClick}
                 >
-                  <Icon path={item.icon} title={item.iconTitle} size={1.125} />
+                  <Icon path={item.icon} title={item.text} size={1.125} />
                   {item.text}
                 </Button>
               ))

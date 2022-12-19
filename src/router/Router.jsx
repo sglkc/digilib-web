@@ -17,8 +17,9 @@ import RiwayatView from '@/views/Riwayat';
 import TandaiView from '@/views/Tandai';
 import TentangView from '@/views/Tentang';
 import UmpanBalikView from '@/views/UmpanBalik';
-import { getItem } from './Loader';
 import PencarianView from '@/views/Pencarian';
+import AdminView from '@/views/Admin';
+import { getItem } from './Loader';
 
 const router = createBrowserRouter([
   {
@@ -102,6 +103,18 @@ const router = createBrowserRouter([
       }
     ]
   },
+  {
+    path: '/admin',
+    element: <DefaultLayout admin />,
+    errorElement: <ErrorView />,
+    children: [
+      {
+        path: '/admin/',
+        element: <AdminView />,
+        loader: () => ({ title: 'Admin', search: true }),
+      },
+    ]
+  }
 ]);
 
 export default function RouterProvider() {
