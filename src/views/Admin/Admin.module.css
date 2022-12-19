@@ -1,0 +1,31 @@
+.container {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+
+  & > div {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    border: orange solid 2px;
+    border-radius: var(--border-radius);
+
+    &:hover {
+      cursor: pointer;
+      background-color: #0000000f;
+    }
+  }
+}
+
+.Items {
+  margin-bottom: 1.5rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+:global(.sm) .Items {
+  flex-direction: column;
+}

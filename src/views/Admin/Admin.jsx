@@ -1,0 +1,24 @@
+import { useNavigate } from 'react-router-dom';
+import { Icon } from '@mdi/react';
+import { mdiPlaylistEdit } from '@mdi/js';
+import { container as className } from './Admin.module.css';
+
+const items = [
+  { name: 'Items', to: 'items', icon: mdiPlaylistEdit },
+];
+
+export default function AdminView() {
+  const navigate = useNavigate();
+
+  return (
+    <div className={className}>
+      { items.map((item, i) => (
+        <div key={i} onClick={() => navigate('/admin/' + item.to)}>
+          <Icon path={item.icon} title={item.name} size={1.5} />
+          <h2>{ item.name }</h2>
+        </div>
+      ))
+      }
+    </div>
+  );
+}

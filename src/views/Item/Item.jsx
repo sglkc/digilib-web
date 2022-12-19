@@ -12,9 +12,7 @@ import Video from './Video';
 import styles from './Item.module.css';
 
 export default function ItemView() {
-  const { state } = useLocation();
-  const loader = useLoaderData();
-  const { item } = state ?? loader;
+  const { item } = useLoaderData();
   const { author, description, cover, media, title, type, Categories } = item;
   const coverUrl = Axios.getUri({ url: '/files/cover/' + cover });
   const [loading, setLoading] = useState(false);

@@ -8,6 +8,7 @@ import {
   mdiAccountOutline,
   mdiChatProcessingOutline,
   mdiBellOutline,
+  mdiPlaylistEdit,
   mdiHistory,
   mdiHomeOutline,
   mdiInformationOutline
@@ -61,6 +62,11 @@ const adminList = [
       text: 'Home'
     },
     {
+      to: '/admin/items',
+      icon: mdiPlaylistEdit,
+      text: 'Edit Item'
+    },
+    {
       to: '/account',
       icon: mdiAccountOutline,
       text: 'Informasi Akun'
@@ -68,12 +74,12 @@ const adminList = [
   ]
 ];
 
-export default function Navbar({ admin, onClick }) {
+export default function Navbar({ isAdmin, onClick }) {
   const navbar = useSelector(state => state.navbar);
   const user = useSelector(state => state.user);
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  const list = admin ? adminList : userList;
+  const list = isAdmin ? adminList : userList;
 
   function logout() {
     document.cookie = 'TOKEN=;Max-Age=0';
@@ -100,13 +106,13 @@ export default function Navbar({ admin, onClick }) {
       <>
         <hr />
         <div className={styles.list}>
-          <Button to={admin ? '/' : '/admin'} onClick={onClick}>
+          <Button to={isAdmin ? '/' : '/admin'} onClick={onClick}>
             <Icon
-              path={admin ? mdiAccountBoxOutline : mdiAccountBox}
-              title={admin ? 'User' : 'Admin'}
+              path={isAdmin ? mdiAccountBoxOutline : mdiAccountBox}
+              title={isAdmin ? 'User' : 'Admin'}
               size={1.125}
             />
-            { admin ? 'Keluar dari Admin' : 'Menu Admin' }
+            { isAdmin ? 'Keluar dari Admin' : 'Menu Admin' }
           </Button>
         </div>
       </>

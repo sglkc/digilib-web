@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Axios from './Axios';
 import { setUser } from '@/store/UserReducer';
 
-export default function Authenticate({ admin, children, loggedIn }) {
+export default function Authenticate({ isAdmin, children, loggedIn }) {
   const [allow, setAllow] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -24,7 +24,7 @@ export default function Authenticate({ admin, children, loggedIn }) {
       .then((res) => {
         dispatch(setUser({ ...res.data.result }));
 
-        if (admin && res.data.result.is_admin) return setAllow(true);
+        if (isAdmin && res.data.result.is_admin) return setAllow(true);
         if (loggedIn) setAllow(true);
         else navigate('/')
       })

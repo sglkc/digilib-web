@@ -18,7 +18,8 @@ import TandaiView from '@/views/Tandai';
 import TentangView from '@/views/Tentang';
 import UmpanBalikView from '@/views/UmpanBalik';
 import PencarianView from '@/views/Pencarian';
-import AdminView from '@/views/Admin';
+import AdminView from '@/views/Admin/Admin';
+import AdminItemListView from '@/views/Admin/ItemList';
 import { getItem } from './Loader';
 
 const router = createBrowserRouter([
@@ -105,14 +106,38 @@ const router = createBrowserRouter([
   },
   {
     path: '/admin',
-    element: <DefaultLayout admin />,
+    element: <DefaultLayout isAdmin />,
     errorElement: <ErrorView />,
     children: [
       {
-        path: '/admin/',
+        path: '/admin',
         element: <AdminView />,
-        loader: () => ({ title: 'Admin', search: true }),
+        loader: () => ({ title: 'Admin' }),
       },
+      {
+        path: '/admin/items',
+        element: <AdminItemListView />,
+        loader: () => ({ title: 'Edit Item' }),
+      },
+      {
+        path: '/admin/item',
+        children: [
+          {
+            path: '/admin/item',
+            element: <Navigate to="/admin" replace />,
+          },
+          {
+            path: '/admin/item/:item_id',
+            element: <ItemView />,
+            errorElement: <ItemNotFound />,
+            loader: getItem,
+          }
+        ]
+      },
+      {
+        path: '*',
+        element: <Navigate to="/admin" replace />
+      }
     ]
   }
 ]);
