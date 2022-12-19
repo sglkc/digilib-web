@@ -56,17 +56,13 @@
 }
 
 .content-container {
-  margin: 0 auto;
+  margin: 0;
   padding: 1.5rem 2rem;
 }
 
 @keyframes fadein {
   from { opacity: 0 }
   to { opacity: 1}
-}
-
-:global(.md) .content-container {
-  margin: 0;
 }
 
 :global(.sm) {

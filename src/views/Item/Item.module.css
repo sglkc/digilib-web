@@ -1,13 +1,13 @@
+:global(.react-player__shadow) {
+  z-index: 500;
+}
+
 .cover {
   display: none;
   margin: -1.5rem -2rem;
   background-image: url(/banner-2.png);
   background-position: center;
   text-align: center;
-
-  & div {
-    z-index: 500;
-  }
 
   & img {
     width: 100%;

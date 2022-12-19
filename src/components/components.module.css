@@ -72,6 +72,10 @@
   background-color: #D9D9D9;
   border: 2px solid transparent;
   width: stretch;
+
+  &:focus-visible {
+    outline: darkgray auto 1px;
+  }
 }
 
 .Password {

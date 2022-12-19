@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import Axios from '@/func/Axios';
+import CategoryScroller from '@/components/CategoryScroller';
 import ItemScroller from '@/components/ItemScroller/ItemScroller';
 import Search from '@/components/Search';
+import SortBy from '@/components/SortBy';
 
 export default function PencarianView() {
   const [params, setParams] = useSearchParams();
@@ -23,24 +25,20 @@ export default function PencarianView() {
   }
 
   return (
-    <form
-      style={{ minWidth: '50vw' }}
-      onSubmit={onSubmit}
-    >
+    <form onSubmit={onSubmit}>
       <Search
         placeholder="Ketik yang Anda cari disini"
         defaultValue={params.get('q')}
+        style={{ marginBottom: '1.5rem' }}
       />
       { params.get('q') ?
-        <ItemScroller url={url} />
+        <>
+          <CategoryScroller />
+          <SortBy />
+          <ItemScroller url={url} />
+        </>
         :
-        <h4
-          style={{
-            marginTop: '1.5rem',
-            textAlign: 'center',
-            fontSize: '1.125rem'
-          }}
-        >
+        <h4 style={{ textAlign: 'center', fontSize: '1.125rem' }}>
           Silahkan cari untuk item
         </h4>
       }
