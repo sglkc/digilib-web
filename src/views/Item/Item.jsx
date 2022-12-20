@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useLoaderData, useLocation } from 'react-router-dom';
+import { useLoaderData } from 'react-router-dom';
 import { Icon } from '@mdi/react';
 import {
   mdiBookmark, mdiBookmarkOutline, mdiTimerSand, mdiShareVariant

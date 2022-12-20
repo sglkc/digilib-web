@@ -19,6 +19,7 @@ import TentangView from '@/views/Tentang';
 import UmpanBalikView from '@/views/UmpanBalik';
 import PencarianView from '@/views/Pencarian';
 import AdminView from '@/views/Admin/Admin';
+import AdminItemFormView from '@/views/Admin/ItemForm';
 import AdminItemListView from '@/views/Admin/ItemList';
 import { getItem } from './Loader';
 
@@ -128,7 +129,7 @@ const router = createBrowserRouter([
           },
           {
             path: '/admin/item/:item_id',
-            element: <ItemView />,
+            element: <AdminItemFormView />,
             errorElement: <ItemNotFound />,
             loader: getItem,
           }

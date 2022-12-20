@@ -29,3 +29,57 @@
 :global(.sm) .Items {
   flex-direction: column;
 }
+
+.ItemForm {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+
+  & h2 {
+    text-align: center;
+  }
+
+  & h3 {
+    margin: 1rem 0 0.5rem 1rem;
+  }
+
+  & img, & button {
+    margin-top: 1rem;
+  }
+
+  & p {
+    margin: 0 0 0.25rem 1rem;
+  }
+
+  & hr {
+    margin: 1.5rem 0;
+  }
+
+  & > div {
+    flex: 1 1;
+    width: 100%;
+
+    &:first-child {
+      max-width: 300px;
+    }
+  }
+
+  & [data-div="buttons"] {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  & [data-div="radio"] {
+    margin-top: 0.5rem;
+    margin-left: 1rem;
+    display: flex;
+    gap: 1rem;
+    font-size: 1.125rem;
+  }
+}
+
+:global(.md) .ItemForm {
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
