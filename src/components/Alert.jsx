@@ -1,10 +1,10 @@
 import { mdiCheckBold, mdiExclamationThick } from '@mdi/js';
 import { Icon } from '@mdi/react';
-import { Alert as style } from './components.module.css';
+import { Alert as className } from './components.module.css';
 
-export default function Alert({ text, error }) {
+export default function Alert({ text, error, style }) {
   return (
-    <div className={style} error={error}>
+    <div className={className} error={error ? 'true' : undefined} style={style}>
       <Icon
         path={error ? mdiExclamationThick : mdiCheckBold}
         color="white"

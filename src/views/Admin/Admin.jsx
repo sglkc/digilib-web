@@ -1,10 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 import { Icon } from '@mdi/react';
-import { mdiPlaylistEdit } from '@mdi/js';
+import { mdiChatPlusOutline, mdiPlaylistEdit } from '@mdi/js';
 import { container as className } from './Admin.module.css';
 
 const items = [
   { name: 'Items', to: 'items', icon: mdiPlaylistEdit },
+  { name: 'Quotes', to: 'quotes', icon: mdiChatPlusOutline },
 ];
 
 export default function AdminView() {

@@ -21,6 +21,7 @@ import PencarianView from '@/views/Pencarian';
 import AdminView from '@/views/Admin/Admin';
 import AdminItemFormView from '@/views/Admin/ItemForm';
 import AdminItemListView from '@/views/Admin/ItemList';
+import AdminQuotesView from '@/views/Admin/Quotes';
 import { getItem } from './Loader';
 
 const router = createBrowserRouter([
@@ -134,6 +135,11 @@ const router = createBrowserRouter([
             loader: getItem,
           }
         ]
+      },
+      {
+        path: '/admin/quotes',
+        element: <AdminQuotesView />,
+        loader: () => ({ title: 'Quotes' }),
       },
       {
         path: '*',

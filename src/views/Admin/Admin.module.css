@@ -82,4 +82,63 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+
+  & > div:first-child {
+    max-width: auto;
+  }
+}
+
+.Quotes {
+  & table {
+    width: 100%;
+  }
+
+  & th, & td {
+    padding: 0.25rem;
+    border: 1px solid #bbb;
+  }
+
+  & th {
+    background-color: #eee;
+  }
+
+  & td {
+    &:first-child {
+      text-align: justify;
+    }
+    &:last-child {
+      text-align: center;
+    }
+  }
+
+  & td button {
+    padding: 0.5rem 0.75rem;
+    background-color: var(--green-color);
+    font-size: 0.825rem;
+  }
+
+  & nav {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    & button {
+      background-color: #999;
+    }
+  }
+
+  & hr {
+    margin: 1.5rem 0;
+  }
+
+  & h3 {
+    margin: 1rem 0 0.5rem 1rem;
+  }
+
+  & form div {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+  }
 }

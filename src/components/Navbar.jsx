@@ -6,6 +6,7 @@ import {
   mdiAccountBox,
   mdiAccountBoxOutline,
   mdiAccountOutline,
+  mdiChatPlusOutline,
   mdiChatProcessingOutline,
   mdiBellOutline,
   mdiPlaylistEdit,
@@ -65,6 +66,11 @@ const adminList = [
       to: '/admin/items',
       icon: mdiPlaylistEdit,
       text: 'Edit Item'
+    },
+    {
+      to: '/admin/quotes',
+      icon: mdiChatPlusOutline,
+      text: 'Quotes'
     },
     {
       to: '/account',
