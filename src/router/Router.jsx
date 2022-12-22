@@ -17,8 +17,12 @@ import RiwayatView from '@/views/Riwayat';
 import TandaiView from '@/views/Tandai';
 import TentangView from '@/views/Tentang';
 import UmpanBalikView from '@/views/UmpanBalik';
-import { getItem } from './Loader';
 import PencarianView from '@/views/Pencarian';
+import AdminView from '@/views/Admin/Admin';
+import AdminItemFormView from '@/views/Admin/ItemForm';
+import AdminItemListView from '@/views/Admin/ItemList';
+import AdminQuotesView from '@/views/Admin/Quotes';
+import { editItem, getItem } from './Loader';
 
 const router = createBrowserRouter([
   {
@@ -102,6 +106,52 @@ const router = createBrowserRouter([
       }
     ]
   },
+  {
+    path: '/admin',
+    element: <DefaultLayout isAdmin />,
+    errorElement: <ErrorView />,
+    children: [
+      {
+        path: '/admin',
+        element: <AdminView />,
+        loader: () => ({ title: 'Admin' }),
+      },
+      {
+        path: '/admin/items',
+        element: <AdminItemListView />,
+        loader: () => ({ title: 'Edit Item' }),
+      },
+      {
+        path: '/admin/item',
+        children: [
+          {
+            path: '/admin/item',
+            element: <Navigate to="/admin" replace />,
+          },
+          {
+            path: '/admin/item/new',
+            element: <AdminItemFormView />,
+            loader: () => ({ title: 'Tambah Item' })
+          },
+          {
+            path: '/admin/item/:item_id',
+            element: <AdminItemFormView />,
+            errorElement: <ItemNotFound />,
+            loader: editItem,
+          }
+        ]
+      },
+      {
+        path: '/admin/quotes',
+        element: <AdminQuotesView />,
+        loader: () => ({ title: 'Quotes' }),
+      },
+      {
+        path: '*',
+        element: <Navigate to="/admin" replace />
+      }
+    ]
+  }
 ]);
 
 export default function RouterProvider() {

@@ -1,0 +1,178 @@
+.container {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+
+  & > div {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    border: orange solid 2px;
+    border-radius: var(--border-radius);
+
+    &:hover {
+      cursor: pointer;
+      background-color: #0000000f;
+    }
+  }
+}
+
+.Items {
+  margin-bottom: 1.5rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+:global(.sm) .Items {
+  flex-direction: column;
+}
+
+.ItemForm {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+
+  & h2, & h1 {
+    text-align: center;
+  }
+
+  & h3 {
+    margin: 1rem 0 0.5rem 1rem;
+  }
+
+  & img {
+    margin-top: 1rem;
+    width: 100%;
+    max-height: 400px;
+  }
+
+  & button {
+    margin-top: 1rem;
+  }
+
+  & small {
+    overflow-wrap: anywhere;
+  }
+
+  & hr {
+    margin: 1.5rem 0;
+  }
+
+  & > form {
+    flex: 1 1;
+    width: 100%;
+    scroll-margin-top: 5.5rem;
+
+    &:first-child {
+      max-width: 300px;
+      & > hr {
+        display: none;
+      }
+    }
+
+    & > p {
+      margin: 0 0 0.25rem 1rem;
+    }
+
+    & input[type="radio"] {
+      accent-color: orange;
+    }
+  }
+
+  & [data-div="buttons"] {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  & [data-div="chips"] {
+    margin: 0.75rem 0.5rem;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  & [data-div="radio"] {
+    margin-top: 0.5rem;
+    margin-left: 1rem;
+    display: flex;
+    gap: 1rem;
+    font-size: 1.125rem;
+  }
+}
+
+:global(.md) .ItemForm {
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  & img {
+    height: 300px;
+    object-fit: contain;
+  }
+
+  & > form:first-child {
+    max-width: 100%;
+    & > hr {
+      margin-bottom: 0;
+      display: block;
+    }
+  }
+}
+
+.Quotes {
+  & table {
+    width: 100%;
+  }
+
+  & th, & td {
+    padding: 0.25rem;
+    border: 1px solid #bbb;
+  }
+
+  & th {
+    background-color: #eee;
+  }
+
+  & td {
+    &:first-child {
+      text-align: justify;
+    }
+    &:last-child {
+      text-align: center;
+    }
+  }
+
+  & td button {
+    padding: 0.5rem 0.75rem;
+    background-color: var(--green-color);
+    font-size: 0.825rem;
+  }
+
+  & nav {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    & button {
+      background-color: #999;
+    }
+  }
+
+  & hr {
+    margin: 1.5rem 0;
+  }
+
+  & h3 {
+    margin: 1rem 0 0.5rem 1rem;
+  }
+
+  & form div {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+  }
+}

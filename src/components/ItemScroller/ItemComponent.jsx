@@ -1,24 +1,18 @@
 import { useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Icon } from '@mdi/react';
 import { mdiBookmark, mdiBookmarkOutline, mdiTimerSand } from '@mdi/js';
 import Axios from '@/func/Axios';
 import Chip from './Chip';
 import styles from './ItemScroller.module.css';
 
-export default function Item({ item, onBookmark }) {
+export default function Item({ item, onBookmark, onClick }) {
   const { item_id, author, cover, title, Bookmark, Categories } = item;
   const ref = useRef(null);
   const [loading, setLoading] = useState(false);
   const [bookmark, setBookmark] = useState(Bookmark);
-  const navigate = useNavigate();
   const coverUrl = Axios.getUri({ url: '/files/cover/' + cover });
 
   useEffect(() => setBookmark(Bookmark), [item]);
-
-  function gotoItem() {
-    navigate('/item/' + item_id);
-  }
 
   function toggleBookmark(e) {
     e.stopPropagation();
@@ -45,7 +39,7 @@ export default function Item({ item, onBookmark }) {
   }
 
   return (
-    <div ref={ref} className={styles['item-container']} onClick={gotoItem}>
+    <div ref={ref} className={styles['item-container']} onClick={onClick}>
       <img src={coverUrl} width="100" />
       <div className={styles['item-detail']}>
         <h3>{ title }</h3>

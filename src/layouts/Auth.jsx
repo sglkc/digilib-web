@@ -9,7 +9,7 @@ export default function AuthLayout({ children, style }) {
   useEffect(() => void(document.title = `${title} | Jalan Rahmat`), [title]);
 
   return (
-    <Authenticate auth={true}>
+    <Authenticate>
       <div className={className['layout-container']} style={style}>
         { children }
       </div>

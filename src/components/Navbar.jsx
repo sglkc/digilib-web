@@ -3,9 +3,14 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Icon } from '@mdi/react';
 import {
+  mdiAccountBox,
+  mdiAccountBoxOutline,
   mdiAccountOutline,
+  mdiChatPlusOutline,
   mdiChatProcessingOutline,
   mdiBellOutline,
+  mdiPlaylistEdit,
+  mdiPlaylistPlus,
   mdiHistory,
   mdiHomeOutline,
   mdiInformationOutline
@@ -14,30 +19,26 @@ import Logo from '@/assets/logo.png';
 import Button from '@/components/Button';
 import styles from './Navbar.module.css';
 
-const list = [
+const userList = [
   [
     {
       to: '/',
       icon: mdiHomeOutline,
-      iconTitle: 'etalase',
       text: 'Etalase'
     },
     {
       to: '/account',
       icon: mdiAccountOutline,
-      iconTitle: 'akun',
       text: 'Informasi Akun'
     },
     {
       to: '/notification',
       icon: mdiBellOutline,
-      iconTitle: 'notifikasi',
       text: 'Notifikasi'
     },
     {
       to: '/history',
       icon: mdiHistory,
-      iconTitle: 'riwayat',
       text: 'Riwayat'
     },
   ],
@@ -45,23 +46,52 @@ const list = [
     {
       to: '/feedback',
       icon: mdiChatProcessingOutline,
-      iconTitle: 'feedback',
       text: 'Umpan Balik'
     },
     {
       to: '/about',
       icon: mdiInformationOutline,
-      iconTitle: 'tentang',
       text: 'Tentang Aplikasi'
     },
   ],
 ];
 
-export default function Navbar({ onClick }) {
+const adminList = [
+  [
+    {
+      to: '/admin',
+      icon: mdiHomeOutline,
+      text: 'Home'
+    },
+    {
+      to: '/admin/item/new',
+      icon: mdiPlaylistPlus,
+      text: 'Tambah Item'
+    },
+    {
+      to: '/admin/items',
+      icon: mdiPlaylistEdit,
+      text: 'Edit Item'
+    },
+    {
+      to: '/admin/quotes',
+      icon: mdiChatPlusOutline,
+      text: 'Quotes'
+    },
+    {
+      to: '/account',
+      icon: mdiAccountOutline,
+      text: 'Informasi Akun'
+    },
+  ]
+];
+
+export default function Navbar({ isAdmin, onClick }) {
   const navbar = useSelector(state => state.navbar);
   const user = useSelector(state => state.user);
   const { pathname } = useLocation();
   const navigate = useNavigate();
+  const list = isAdmin ? adminList : userList;
 
   function logout() {
     document.cookie = 'TOKEN=;Max-Age=0';
@@ -84,6 +114,21 @@ export default function Navbar({ onClick }) {
         <h3>{ user.nama }</h3>
         <p>{ user.email }</p>
       </div>
+      { user.is_admin &&
+      <>
+        <hr />
+        <div className={styles.list}>
+          <Button to={isAdmin ? '/' : '/admin'} onClick={onClick}>
+            <Icon
+              path={isAdmin ? mdiAccountBoxOutline : mdiAccountBox}
+              title={isAdmin ? 'User' : 'Admin'}
+              size={1.125}
+            />
+            { isAdmin ? 'Keluar dari Admin' : 'Menu Admin' }
+          </Button>
+        </div>
+      </>
+      }
       { list.map((items, i) => (
         <Fragment key={i}>
           <hr />
@@ -98,7 +143,7 @@ export default function Navbar({ onClick }) {
                   }
                   onClick={onClick}
                 >
-                  <Icon path={item.icon} title={item.iconTitle} size={1.125} />
+                  <Icon path={item.icon} title={item.text} size={1.125} />
                   {item.text}
                 </Button>
               ))

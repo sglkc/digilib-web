@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useInView } from 'react-cool-inview';
 import { Icon } from '@mdi/react';
@@ -7,7 +8,7 @@ import Axios from '@/func/Axios';
 import Item from './ItemComponent';
 import styles from './ItemScroller.module.css';
 
-export default function ItemScroller({ bookmarksOnly, url }) {
+export default function ItemScroller({ bookmarksOnly, isAdmin, url }) {
   url ??= '/items';
   const LIMIT = 10;
   const defaultState = {
@@ -17,6 +18,7 @@ export default function ItemScroller({ bookmarksOnly, url }) {
     lastPage: false
   };
 
+  const navigate = useNavigate();
   const filter = useSelector(state => state.filter);
   const [state, setState] = useState(defaultState);
   const { observe } = useInView({
@@ -31,7 +33,7 @@ export default function ItemScroller({ bookmarksOnly, url }) {
       .get(url, {
         params: {
           limit: LIMIT,
-          order: filter.order === 'Terbaru' ? undefined : 'DESC',
+          order: filter.order === 'Terbaru' ? 'DESC' : undefined,
           page: state.page,
           type: filter.type === 'semua' ? undefined : filter.type
         }
@@ -56,6 +58,10 @@ export default function ItemScroller({ bookmarksOnly, url }) {
       });
   }
 
+  function gotoItem(item_id) {
+    navigate((isAdmin ? '/admin/item/' : '/item/') + item_id);
+  }
+
   useEffect(() => {
     setState({ ...defaultState });
     getItems();
@@ -68,6 +74,7 @@ export default function ItemScroller({ bookmarksOnly, url }) {
           key={i}
           item={item}
           onBookmark={(e) => { if (bookmarksOnly) e.remove() }}
+          onClick={() => gotoItem(item.item_id)}
         />
       ))
       }

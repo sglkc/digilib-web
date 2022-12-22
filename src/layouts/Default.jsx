@@ -8,7 +8,7 @@ import { toggleNavbar } from '@/store/NavbarReducer';
 import Navbar from '@/components/Navbar';
 import styles from './Default.module.css';
 
-export default function DefaultLayout() {
+export default function DefaultLayout({ isAdmin }) {
   const navigate = useNavigate();
   const { data } = useMatches().at(-1);
   const overlay = useSelector(state => state.navbar.open);
@@ -20,8 +20,8 @@ export default function DefaultLayout() {
   }, [data]);
 
   return (
-    <Authenticate auth={false}>
-      <Navbar onClick={() => setNavbar(false)} />
+    <Authenticate loggedIn={true} isAdmin={isAdmin}>
+      <Navbar isAdmin={isAdmin} onClick={() => setNavbar(false)} />
       { overlay &&
       <div
         onClick={() => setNavbar(false)}
