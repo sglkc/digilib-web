@@ -87,7 +87,11 @@ export default function AdminQuotesView() {
               </tr>
             ))
             :
-              <h3>Memuat...</h3>
+              <tr>
+                <td>
+                  <h3>Memuat...</h3>
+                </td>
+              </tr>
           }
         </tbody>
       </table>

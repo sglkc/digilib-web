@@ -20,7 +20,7 @@ export default function AdminItemListView() {
   function onSubmit(e) {
     e.preventDefault();
 
-    const search = e.target[1].value;
+    const search = e.target.elements.search.value;
 
     setUrl(Axios.getUri({ url: '/items', params: { search }}));
     setParams({ q: search });
@@ -29,8 +29,9 @@ export default function AdminItemListView() {
   return (
     <form onSubmit={onSubmit}>
       <div className={className}>
-        <Button type="button">Tambah Item Baru</Button>
+        <Button to="/admin/item/new" type="button">Tambah Item Baru</Button>
         <Search
+          name="search"
           placeholder="Ketik yang Anda cari disini"
           defaultValue={params.get('q')}
         />

@@ -33,7 +33,7 @@ export default function ItemScroller({ bookmarksOnly, isAdmin, url }) {
       .get(url, {
         params: {
           limit: LIMIT,
-          order: filter.order === 'Terbaru' ? undefined : 'DESC',
+          order: filter.order === 'Terbaru' ? 'DESC' : undefined,
           page: state.page,
           type: filter.type === 'semua' ? undefined : filter.type
         }

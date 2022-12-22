@@ -10,6 +10,7 @@ import {
   mdiChatProcessingOutline,
   mdiBellOutline,
   mdiPlaylistEdit,
+  mdiPlaylistPlus,
   mdiHistory,
   mdiHomeOutline,
   mdiInformationOutline
@@ -61,6 +62,11 @@ const adminList = [
       to: '/admin',
       icon: mdiHomeOutline,
       text: 'Home'
+    },
+    {
+      to: '/admin/item/new',
+      icon: mdiPlaylistPlus,
+      text: 'Tambah Item'
     },
     {
       to: '/admin/items',

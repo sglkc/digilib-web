@@ -22,7 +22,7 @@ import AdminView from '@/views/Admin/Admin';
 import AdminItemFormView from '@/views/Admin/ItemForm';
 import AdminItemListView from '@/views/Admin/ItemList';
 import AdminQuotesView from '@/views/Admin/Quotes';
-import { getItem } from './Loader';
+import { editItem, getItem } from './Loader';
 
 const router = createBrowserRouter([
   {
@@ -129,10 +129,15 @@ const router = createBrowserRouter([
             element: <Navigate to="/admin" replace />,
           },
           {
+            path: '/admin/item/new',
+            element: <AdminItemFormView />,
+            loader: () => ({ title: 'Tambah Item' })
+          },
+          {
             path: '/admin/item/:item_id',
             element: <AdminItemFormView />,
             errorElement: <ItemNotFound />,
-            loader: getItem,
+            loader: editItem,
           }
         ]
       },

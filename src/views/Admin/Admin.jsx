@@ -1,10 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 import { Icon } from '@mdi/react';
-import { mdiChatPlusOutline, mdiPlaylistEdit } from '@mdi/js';
+import { mdiChatPlusOutline, mdiPlaylistEdit, mdiPlaylistPlus } from '@mdi/js';
 import { container as className } from './Admin.module.css';
 
 const items = [
-  { name: 'Items', to: 'items', icon: mdiPlaylistEdit },
+  { name: 'Tambah Item', to: 'item/new', icon: mdiPlaylistPlus },
+  { name: 'Edit Item', to: 'items', icon: mdiPlaylistEdit },
   { name: 'Quotes', to: 'quotes', icon: mdiChatPlusOutline },
 ];
 
