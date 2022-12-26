@@ -28,15 +28,15 @@
   transition: border-color 0.1s;
 
   &:hover {
-    border-color: #555;
+    border-color: #0000003f;
   }
 }
 
 .CategoryScroller {
   position: sticky;
   top: 4rem;
-  margin: -1rem -1.5rem;
-  padding: 0.5rem;
+  margin: -1rem -1.5rem -1rem;
+  padding: 1rem 0.5rem 0.5rem;
   border-radius: var(--border-radius);
   display: flex;
   justify-content: center;
@@ -61,6 +61,11 @@
       border-bottom: 4px orange solid;
     }
   }
+}
+
+:global(.xs) .CategoryScroller {
+  padding: 1rem 2.5rem 0.5rem;
+  gap: 1rem;
 }
 
 .Input {

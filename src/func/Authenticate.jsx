@@ -10,7 +10,7 @@ export default function Authenticate({ isAdmin, children, loggedIn }) {
   const navigate = useNavigate();
 
   function redirect() {
-    localStorage.removeItem('digilib');
+    sessionStorage.removeItem('digilib');
 
     if (loggedIn) navigate('/login');
     else setAllow(true);

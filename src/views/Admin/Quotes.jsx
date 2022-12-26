@@ -125,6 +125,7 @@ export default function AdminQuotesView() {
           name="text"
           placeholder="Teks"
           defaultValue={edit.text}
+          rows="5"
           textarea="true"
           autoComplete="off"
           maxLength={250}

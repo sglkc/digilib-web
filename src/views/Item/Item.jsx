@@ -5,6 +5,7 @@ import {
   mdiBookmark, mdiBookmarkOutline, mdiTimerSand, mdiShareVariant
 } from '@mdi/js';
 import Axios from '@/func/Axios';
+import Alert from '@/components/Alert';
 import Chip from '@/components/ItemScroller/Chip';
 import Audio from './Audio';
 import Book from './Book';
@@ -15,6 +16,7 @@ export default function ItemView() {
   const { item } = useLoaderData();
   const { author, description, cover, media, title, type, Categories } = item;
   const coverUrl = Axios.getUri({ url: '/files/cover/' + cover });
+  const [alert, setAlert] = useState(false);
   const [loading, setLoading] = useState(false);
   const [bookmark, setBookmark] = useState(item.Bookmark);
 
@@ -46,6 +48,27 @@ export default function ItemView() {
       .finally(() => setLoading(false));
   }
 
+  function share() {
+    if (!window.isSecureContext) return setAlert({
+      text: 'Tidak dapat membagikan tautan, Anda dapat salin tautan diatas',
+      error: true
+    });
+
+    const { share, clipboard} = window.navigator;
+    const url = window.location.href;
+
+    share(url)
+      .then(() => setAlert({ text: 'Berhasil membagikan tautan' }))
+      .catch(() => {
+        clipboard.writeText(url)
+          .then(() => setAlert({ text: 'Tautan telah disalin' }))
+          .catch(() => setAlert({
+            text: 'Tidak dapat membagikan tautan',
+            error: true
+          }));
+      });
+  }
+
   return (
     <>
       <div className={styles.cover}>
@@ -67,7 +90,7 @@ export default function ItemView() {
             <h3>{ author }</h3>
           </div>
           <div className={styles.row}>
-            <button className={styles.button}>
+            <button className={styles.button} onClick={share}>
               <Icon path={mdiShareVariant} title="Bagikan" size={1.125} />
               <p>Bagikan</p>
             </button>
@@ -86,6 +109,7 @@ export default function ItemView() {
               />
             </button>
           </div>
+          { alert && <Alert {...alert} /> }
           { type === 'audio' && <Audio media={media} /> }
           { type === 'book' && <Book media={media} /> }
           <h3>Deskripsi Singkat</h3>

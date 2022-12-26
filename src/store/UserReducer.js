@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const { atob, btoa } = window;
-const local = atob(localStorage.getItem('digilib') || '') || undefined;
+const local = atob(sessionStorage.getItem('digilib') || '') || undefined;
 const initialState = local
   ? JSON.parse(local)
   : {
@@ -23,7 +23,7 @@ export const User = createSlice({
       };
 
       state = Object.assign(state, payload);
-      localStorage.setItem('digilib', btoa(JSON.stringify(state)));
+      sessionStorage.setItem('digilib', btoa(JSON.stringify(state)));
     },
   },
 });

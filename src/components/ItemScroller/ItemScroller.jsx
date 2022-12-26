@@ -35,7 +35,7 @@ export default function ItemScroller({ bookmarksOnly, isAdmin, url }) {
           limit: LIMIT,
           order: filter.order === 'Terbaru' ? 'DESC' : undefined,
           page: state.page,
-          type: filter.type === 'semua' ? undefined : filter.type
+          type: filter.type
         }
       })
       .then((res) => {

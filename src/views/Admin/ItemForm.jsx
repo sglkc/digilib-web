@@ -9,6 +9,13 @@ import Input from '@/components/Input';
 import { ItemForm as className } from './Admin.module.css';
 
 export default function AdminItemFormView() {
+  const types = [
+    { text: 'Artikel', value: 'article' },
+    { text: 'Audio', value: 'audio' },
+    { text: 'Buku', value: 'book' },
+    { text: 'Video', value: 'video' },
+  ];
+
   const { item } = useLoaderData();
   const [files, setFiles] = useState({
     cover: item?.cover,
@@ -226,15 +233,15 @@ export default function AdminItemFormView() {
         }
         <h3>Tipe Item</h3>
         <div data-div="radio">
-          { ['Audio', 'Book', 'Video'].map((text, i) => (
+          { types.map((t, i) => (
             <label key={i}>
               <input
                 type="radio"
                 name="type"
-                value={text.toLowerCase()}
-                defaultChecked={text.toLowerCase() === item?.type}
+                value={t.value}
+                defaultChecked={t.value === item?.type}
                 required
-              /> { text }
+              /> { t.text }
             </label>
           ))
           }

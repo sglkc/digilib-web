@@ -94,7 +94,7 @@ export default function Navbar({ isAdmin, onClick }) {
   const list = isAdmin ? adminList : userList;
 
   function logout() {
-    document.cookie = 'TOKEN=;Max-Age=0';
+    document.cookie = 'TOKEN=;Max-Age=0;path=/';
     navigate('/login');
   }
 

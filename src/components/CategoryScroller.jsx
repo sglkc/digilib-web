@@ -4,19 +4,25 @@ import Button from './Button';
 import { CategoryScroller as style } from './components.module.css';
 
 export default function CategoryScroller() {
-  const types = ['Semua', 'Audio', 'Book', 'Video'];
-  const type = useSelector((state) => state.filter.type);
+  const types = [
+    { text: 'Semua', value: undefined },
+    { text: 'Artikel', value: 'article' },
+    { text: 'Audio', value: 'audio' },
+    { text: 'Buku', value: 'book' },
+    { text: 'Video', value: 'video' },
+  ];
+  const selectedType = useSelector((state) => state.filter.type);
   const dispatch = useDispatch();
 
   return (
     <div className={style}>
-      { types.map((name, i) => (
+      { types.map((type, i) => (
         <Button
           key={i}
-          className={type === name.toLowerCase() ? 'selected' : ''}
-          onClick={() => dispatch(setType(name.toLowerCase()))}
+          className={type.value === selectedType ? 'selected' : ''}
+          onClick={() => dispatch(setType(type.value))}
         >
-          { name }
+          { type.text }
         </Button>
       ))}
     </div>

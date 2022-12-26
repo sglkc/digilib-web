@@ -1,12 +1,15 @@
 import { useState } from 'react';
+import Axios from '@/func/Axios';
 import Button from '@/components/Button';
 import { Book as className } from './Type.module.css';
 
 export default function Book({ media }) {
   const [open, setOpen] = useState(false);
   const embed = 'https://docs.google.com/gview?embedded=true&url=';
-  const timestamp = '%3Ftimestamp%3D' + Date.now();
-  const src = embed + media + timestamp;
+  const mediaUrl = Axios.getUri({
+    url: '/files/media/' + media,
+    params: { timestamp: Date.now() }
+  });
 
   function toggleOpen() {
     const scroller = document.getElementById('scroller');
@@ -24,7 +27,10 @@ export default function Book({ media }) {
         onClick={toggleOpen}
       >
         <p>Ketuk disini untuk kembali</p>
-        <iframe src={src} onClick={(e) => e.stopPropagation()}></iframe>
+        <iframe
+          src={navigator.pdfViewerEnabled ? mediaUrl : embed + mediaUrl}
+          onClick={(e) => e.stopPropagation()}
+        />
       </div>
     </div>
   );
