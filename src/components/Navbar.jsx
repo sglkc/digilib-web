@@ -8,6 +8,7 @@ import {
   mdiAccountOutline,
   mdiChatPlusOutline,
   mdiChatProcessingOutline,
+  mdiFileDocumentEditOutline,
   mdiBellOutline,
   mdiPlaylistEdit,
   mdiPlaylistPlus,
@@ -62,6 +63,11 @@ const adminList = [
       to: '/admin',
       icon: mdiHomeOutline,
       text: 'Home'
+    },
+    {
+      to: '/admin/editor',
+      icon: mdiFileDocumentEditOutline,
+      text: 'Editor Teks'
     },
     {
       to: '/admin/item/new',

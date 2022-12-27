@@ -176,3 +176,7 @@
     justify-content: space-between;
   }
 }
+
+:global(.public-DraftStyleDefault-ltr) {
+  text-align: inherit !important;
+}

@@ -289,6 +289,5 @@ export default function AdminItemFormView() {
         </div>
       </form>
     </div>
-  )
-
+  );
 }
