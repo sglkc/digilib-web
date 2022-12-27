@@ -88,12 +88,7 @@ export default function ItemScroller({ bookmarksOnly, isAdmin, url }) {
       }
       { !state.lastPage &&
         <span ref={observe} className={styles.details}>
-          <Icon
-            className={styles.spin}
-            path={mdiLoading}
-            size={1.25}
-            color="orange"
-          />
+          <Icon path={mdiLoading} size={1.25} spin={true} color="orange" />
         </span>
       }
     </div>

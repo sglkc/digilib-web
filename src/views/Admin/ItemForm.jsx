@@ -163,7 +163,7 @@ export default function AdminItemFormView() {
 
   return (
     <div className={styles.container}>
-      <form className={styles.files} name="files" onSubmit={upload}>
+      <form className={styles.afiles} name="files" onSubmit={upload}>
         { alert && <Alert style={{ marginBottom: '1.5rem' }} {...alert} /> }
         <h1>{ item ? 'Perbarui' : 'Tambah' } Item</h1>
         { files.cover &&

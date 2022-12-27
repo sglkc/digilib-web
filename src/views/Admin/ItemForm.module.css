@@ -67,7 +67,7 @@
     }
   }
 
-  .files {
+  & .files {
     max-width: 100%;
 
     & > hr {

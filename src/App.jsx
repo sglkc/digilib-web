@@ -2,8 +2,9 @@ import { useEffect } from 'react';
 import { Provider } from 'react-redux';
 import Router from '@/router/Router.jsx';
 import store from '@/store';
-import '@fontsource/nunito/variable.css';
-import '@fontsource/nunito/variable-italic.css';
+import '@fontsource/nunito/latin-400.css';
+import '@fontsource/nunito/latin-600.css';
+import '@fontsource/nunito/latin-700.css';
 import './App.css';
 
 const root = document.getElementById('root').classList;

@@ -9,7 +9,7 @@
   flex-direction: column;
   gap: 0.5rem;
   color: snow;
-  font-weight: 650;
+  font-weight: 600;
   line-height: 1.25rem;
 
   & :last-child {

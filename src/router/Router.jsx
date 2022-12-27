@@ -1,8 +1,10 @@
+import { lazy } from 'react';
 import {
   createBrowserRouter,
   Navigate,
   RouterProvider as Provider
 } from 'react-router-dom';
+import AdminLayout from '@/layouts/Admin';
 import DefaultLayout from '@/layouts/Default';
 import LoginView from '@/views/Auth/Login';
 import RegisterView from '@/views/Auth/Register';
@@ -18,12 +20,13 @@ import TandaiView from '@/views/Tandai';
 import TentangView from '@/views/Tentang';
 import UmpanBalikView from '@/views/UmpanBalik';
 import PencarianView from '@/views/Pencarian';
-import AdminView from '@/views/Admin/Admin';
-import AdminEditorView from '@/views/Admin/Editor';
-import AdminItemFormView from '@/views/Admin/ItemForm';
-import AdminItemListView from '@/views/Admin/ItemList';
-import AdminQuotesView from '@/views/Admin/Quotes';
 import { editItem, getItem } from './Loader';
+
+const AdminView = lazy(() => import('@/views/Admin/Admin'));
+const AdminEditorView = lazy(() => import('@/views/Admin/Editor'));
+const AdminItemFormView = lazy(() => import('@/views/Admin/ItemForm'));
+const AdminItemListView = lazy(() => import('@/views/Admin/ItemList'));
+const AdminQuotesView = lazy(() => import('@/views/Admin/Quotes'));
 
 const router = createBrowserRouter([
   {
@@ -109,7 +112,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/admin',
-    element: <DefaultLayout isAdmin />,
+    element: <AdminLayout />,
     errorElement: <ErrorView />,
     children: [
       {

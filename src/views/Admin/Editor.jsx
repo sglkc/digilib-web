@@ -5,6 +5,8 @@ import draftToHtml from 'draftjs-to-html';
 import Button from '@/components/Button';
 import Input from '@/components/Input';
 import styles from './Editor.module.css';
+import '@fontsource/nunito/latin-400-italic.css';
+import '@fontsource/nunito/latin-700-italic.css';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 export default function AdminEditorView() {

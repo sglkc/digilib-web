@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Outlet, useMatches, useNavigate } from 'react-router-dom';
 import { Icon } from '@mdi/react';
@@ -8,7 +8,7 @@ import { toggleNavbar } from '@/store/NavbarReducer';
 import Navbar from '@/components/Navbar';
 import styles from './Default.module.css';
 
-export default function DefaultLayout({ isAdmin }) {
+export default function DefaultLayout({ children, isAdmin }) {
   const navigate = useNavigate();
   const { data } = useMatches().at(-1);
   const overlay = useSelector(state => state.navbar.open);
@@ -41,7 +41,7 @@ export default function DefaultLayout({ isAdmin }) {
           }
         </div>
         <div className={styles['content-container']}>
-          <Outlet />
+          { isAdmin ? children : <Outlet /> }
         </div>
       </div>
     </Authenticate>
