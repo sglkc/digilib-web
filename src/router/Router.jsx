@@ -19,6 +19,7 @@ import TentangView from '@/views/Tentang';
 import UmpanBalikView from '@/views/UmpanBalik';
 import PencarianView from '@/views/Pencarian';
 import AdminView from '@/views/Admin/Admin';
+import AdminEditorView from '@/views/Admin/Editor';
 import AdminItemFormView from '@/views/Admin/ItemForm';
 import AdminItemListView from '@/views/Admin/ItemList';
 import AdminQuotesView from '@/views/Admin/Quotes';
@@ -115,6 +116,11 @@ const router = createBrowserRouter([
         path: '/admin',
         element: <AdminView />,
         loader: () => ({ title: 'Admin' }),
+      },
+      {
+        path: '/admin/editor',
+        element: <AdminEditorView />,
+        loader: () => ({ title: 'Editor Teks' }),
       },
       {
         path: '/admin/items',

@@ -6,7 +6,7 @@ import Button from '@/components/Button';
 import Chip from '@/components/ItemScroller/Chip';
 import DateInput from '@/components/DateInput';
 import Input from '@/components/Input';
-import { ItemForm as className } from './Admin.module.css';
+import styles from './ItemForm.module.css';
 
 export default function AdminItemFormView() {
   const types = [
@@ -46,6 +46,7 @@ export default function AdminItemFormView() {
     let type = e.target.files.item(0).type;
 
     if (type === 'application/pdf') type = 'book';
+    else if (type === 'text/html') type = 'article';
     else if (type.startsWith('audio')) type = 'audio';
     else if (type.startsWith('video')) type = 'video';
 
@@ -80,13 +81,13 @@ export default function AdminItemFormView() {
     if (upload.cover) data.append(
       'cover',
       upload.cover,
-      date + '-' + upload.cover.name.replace(/ /g, '')
+      date + '-' + upload.cover.name.replace(/ /g, '-')
     );
 
     if (upload.media) data.append(
       'media',
       upload.media,
-      date + '-' + upload.media.name.replace(/ /g, '')
+      date + '-' + upload.media.name.replace(/ /g, '-')
     );
 
     if (!data.entries().next().value) return;
@@ -161,8 +162,8 @@ export default function AdminItemFormView() {
   }
 
   return (
-    <div className={className}>
-      <form name="files" onSubmit={upload}>
+    <div className={styles.container}>
+      <form className={styles.files} name="files" onSubmit={upload}>
         { alert && <Alert style={{ marginBottom: '1.5rem' }} {...alert} /> }
         <h1>{ item ? 'Perbarui' : 'Tambah' } Item</h1>
         { files.cover &&
@@ -185,7 +186,7 @@ export default function AdminItemFormView() {
         <Input
           type="file"
           name="media"
-          accept="video/*,audio/*,.pdf"
+          accept="video/*,audio/*,application/pdf,text/html"
           onChange={changeFileMedia}
         />
         <small>{ files.media }</small>
@@ -194,7 +195,7 @@ export default function AdminItemFormView() {
         </div>
         <hr />
       </form>
-      <form name="detail" onSubmit={submit}>
+      <form className={styles.details} name="detail" onSubmit={submit}>
         <h3>Judul</h3>
         <Input
           name="title"
@@ -227,12 +228,12 @@ export default function AdminItemFormView() {
           required
         />
         { categories?.[0] &&
-        <div data-div="chips">
+        <div className={styles.chips}>
           { categories.map((name, i) => <Chip key={i} name={name} />) }
         </div>
         }
         <h3>Tipe Item</h3>
-        <div data-div="radio">
+        <div className={styles.radios}>
           { types.map((t, i) => (
             <label key={i}>
               <input
@@ -276,7 +277,7 @@ export default function AdminItemFormView() {
           defaultValue={item?.Tag.waktu.slice(0, 10)}
           max=""
         />
-        <div data-div="buttons">
+        <div className={styles.buttons}>
           <Button type="submit">{ item ? 'Perbarui': 'Tambah' } Item</Button>
           { item &&
           <>
@@ -289,6 +290,5 @@ export default function AdminItemFormView() {
         </div>
       </form>
     </div>
-  )
-
+  );
 }

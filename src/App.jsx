@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import Router from '@/router/Router.jsx';
 import store from '@/store';
 import '@fontsource/nunito/variable.css';
+import '@fontsource/nunito/variable-italic.css';
 import './App.css';
 
 const root = document.getElementById('root').classList;

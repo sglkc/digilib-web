@@ -1,0 +1,53 @@
+.form {
+  margin-bottom: 0.5rem;
+  display: flex;
+  gap: 0.25rem;
+  max-width: 42rem;
+}
+
+.buttons {
+  display: flex;
+  gap: 0.25rem;
+
+  & > button {
+    flex-grow: 1;
+  }
+}
+
+:global(.sm) .form {
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.editor, .input, .toolbar {
+  background-color: #fdfdfd;
+  border-color: #ddd;
+}
+
+.input {
+  flex-grow: 1;
+  width: auto;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.editor {
+  padding: 0 1rem;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 0.25rem;
+  font-family: Arial, sans-serif;
+  font-size: initial;
+  font-weight: initial;
+  line-height: initial;
+}
+
+.toolbar {
+  position: sticky;
+  top: 4rem;
+  z-index: 100;
+}
+
+:global(.public-DraftStyleDefault-ltr) {
+  text-align: inherit !important;
+}
