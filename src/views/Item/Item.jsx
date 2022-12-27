@@ -7,6 +7,7 @@ import {
 import Axios from '@/func/Axios';
 import Alert from '@/components/Alert';
 import Chip from '@/components/ItemScroller/Chip';
+import Article from './Article';
 import Audio from './Audio';
 import Book from './Book';
 import Video from './Video';
@@ -16,6 +17,7 @@ export default function ItemView() {
   const { item } = useLoaderData();
   const { author, description, cover, media, title, type, Categories } = item;
   const coverUrl = Axios.getUri({ url: '/files/cover/' + cover });
+  const mediaUrl = Axios.getUri({ url: '/files/media/' + media });
   const [alert, setAlert] = useState(false);
   const [loading, setLoading] = useState(false);
   const [bookmark, setBookmark] = useState(item.Bookmark);
@@ -54,13 +56,12 @@ export default function ItemView() {
       error: true
     });
 
-    const { share, clipboard} = window.navigator;
     const url = window.location.href;
 
-    share(url)
+    window.navigator.share(url)
       .then(() => setAlert({ text: 'Berhasil membagikan tautan' }))
       .catch(() => {
-        clipboard.writeText(url)
+        window.navigator.clipboard.writeText(url)
           .then(() => setAlert({ text: 'Tautan telah disalin' }))
           .catch(() => setAlert({
             text: 'Tidak dapat membagikan tautan',
@@ -73,14 +74,14 @@ export default function ItemView() {
     <>
       <div className={styles.cover}>
         { type === 'video' ?
-          <Video cover={coverUrl} media={media} />
+          <Video cover={coverUrl} media={mediaUrl} />
           :
           <img src={coverUrl} width="200" height="200" />
         }
       </div>
       <div id="scroller" className={styles.scroller}>
         { type === 'video' ?
-          <Video className={styles.video} cover={coverUrl} media={media} />
+          <Video className={styles.video} cover={coverUrl} media={mediaUrl} />
           :
           <img src={coverUrl} width="250" height="200" />
         }
@@ -110,7 +111,8 @@ export default function ItemView() {
             </button>
           </div>
           { alert && <Alert {...alert} /> }
-          { type === 'audio' && <Audio media={media} /> }
+          { type === 'article' && <Article media={mediaUrl} /> }
+          { type === 'audio' && <Audio media={mediaUrl} /> }
           { type === 'book' && <Book media={media} /> }
           <h3>Deskripsi Singkat</h3>
           <p>{ description }</p>

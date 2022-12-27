@@ -1,15 +1,9 @@
 import { useState } from 'react';
-import Axios from '@/func/Axios';
 import Button from '@/components/Button';
-import { Book as className } from './Type.module.css';
+import { Article as className } from './Type.module.css';
 
-export default function Book({ media }) {
+export default function Article({ media }) {
   const [open, setOpen] = useState(false);
-  const embed = 'https://docs.google.com/gview?embedded=true&url=';
-  const mediaUrl = Axios.getUri({
-    url: '/files/media/' + media,
-    params: { timestamp: Date.now() }
-  });
 
   function toggleOpen() {
     const scroller = document.getElementById('scroller');
@@ -20,15 +14,15 @@ export default function Book({ media }) {
 
   return (
     <div className={className}>
-      <Button onClick={toggleOpen}>Baca</Button>
-      <Button>Beli Buku</Button>
+      <Button onClick={toggleOpen}>Baca Artikel</Button>
       <div
         style={!open ? { display: 'none' } : {}}
         onClick={toggleOpen}
       >
         <p>Kembali</p>
         <iframe
-          src={navigator.pdfViewerEnabled ? mediaUrl : embed + mediaUrl}
+          style={{ padding: '0 1rem 4rem' }}
+          src={media}
           onClick={(e) => e.stopPropagation()}
         />
       </div>
