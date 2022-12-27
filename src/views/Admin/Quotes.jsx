@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import Axios from '@/func/Axios';
-import { Quotes as className } from './Admin.module.css';
 import Alert from '@/components/Alert';
 import Button from '@/components/Button';
 import Input from '@/components/Input';
+import styles from './Quotes.module.css';
 
 export default function AdminQuotesView() {
   const LIMIT = 5;
@@ -65,9 +65,9 @@ export default function AdminQuotesView() {
   }
 
   return (
-    <div className={className}>
+    <div className={styles.container}>
       { alert && <Alert style={{ marginBottom: '1rem' }} {...alert} /> }
-      <table>
+      <table className={styles.table}>
         <thead>
           <tr>
             <th>Teks</th>
@@ -82,7 +82,12 @@ export default function AdminQuotesView() {
                 <td>{ quote.text }</td>
                 <td>{ quote.author }</td>
                 <td>
-                  <Button onClick={() => setEdit({ ...quote })}>Edit</Button>
+                  <Button
+                    className={styles.update}
+                    onClick={() => setEdit({ ...quote })}
+                  >
+                    Edit
+                  </Button>
                 </td>
               </tr>
             ))
@@ -95,7 +100,7 @@ export default function AdminQuotesView() {
           }
         </tbody>
       </table>
-      <nav>
+      <nav className={styles.nav}>
         <Button
           onClick={() => setState({
             ...state,
@@ -139,7 +144,7 @@ export default function AdminQuotesView() {
           autoComplete="off"
           required
         />
-        <div>
+        <div className={styles.buttons}>
           { edit &&
           <>
             <Button

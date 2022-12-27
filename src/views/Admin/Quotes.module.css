@@ -1,0 +1,49 @@
+.container {
+  & h3 { margin: 1rem 0 0.5rem 1rem; }
+  & hr { margin: 1.5rem 0; }
+}
+
+.table {
+  width: 100%;
+
+  & th, & td {
+    padding: 0.25rem;
+    border: 1px solid #bbb;
+  }
+
+  & th {
+    background-color: #eee;
+  }
+
+  & td {
+    &:first-child {
+      text-align: justify;
+    }
+    &:last-child {
+      text-align: center;
+    }
+  }
+}
+
+.update {
+  padding: 0.5rem 0.75rem;
+  background-color: var(--green-color);
+  font-size: 0.825rem;
+}
+
+.nav {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  & button {
+    background-color: #999;
+  }
+}
+
+.buttons {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+}

@@ -4,6 +4,7 @@ import { Editor } from 'react-draft-wysiwyg';
 import draftToHtml from 'draftjs-to-html';
 import Button from '@/components/Button';
 import Input from '@/components/Input';
+import styles from './Editor.module.css';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 export default function AdminEditorView() {
@@ -52,56 +53,36 @@ ${draftToHtml(convertToRaw(editorState.getCurrentContent()))}
   return (
     <>
       <a ref={link} style={{ display: 'none' }}/>
-      <form
-        style={{ marginBottom: '1rem', display: 'flex', gap: '0.25rem' }}
-        onSubmit={download}
-      >
+      <form className={styles.form} onSubmit={download}>
         <Input
-          style={{
-            backgroundColor: '#fdfdfd',
-            flexGrow: 1,
-            width: 'auto',
-            border: '1px solid #ddd'
-          }}
+          className={styles.input}
           name="filename"
           pattern="[a-zA-Z- ]+"
           placeholder="Masukkan nama file artikel (a-z)"
           required
         />
-        <Button
-          type="button"
-          style={{ backgroundColor: 'slategray' }}
-          onClick={preview}
-        >
-          Pratinjau
-        </Button>
-        <Button type="submit">Unduh</Button>
+        <div className={styles.buttons}>
+          <Button
+            type="button"
+            style={{ backgroundColor: 'slategray' }}
+            onClick={preview}
+          >
+            Pratinjau
+          </Button>
+          <Button type="submit">Unduh</Button>
+
+        </div>
       </form>
       <Editor
         placeholder="Ketik isi artikel..."
-        toolbarStyle={{
-          backgroundColor: '#fdfdfd',
-          borderColor: '#ddd',
-          position: 'sticky',
-          top: '4rem',
-          zIndex: '400',
-        }}
-        editorStyle={{
-          backgroundColor: '#fdfdfd',
-          padding: '0 1rem',
-          border: '1px solid #ddd',
-          borderRadius: '0.25rem',
-          fontFamily: 'Arial, sans-serif',
-          fontSize: 'initial',
-          fontWeight: 'initial',
-          lineHeight: 'initial'
-        }}
+        editorClassName={styles.editor}
+        toolbarClassName={styles.toolbar}
         editorState={editorState}
         onEditorStateChange={setEditorState}
         toolbar={{
           options: [
             'inline', 'blockType', 'fontSize', 'list', 'textAlign',
-            'colorPicker', 'link', 'image', 'remove', 'history'
+            'colorPicker', 'link', 'image', 'history'
           ]
         }}
       />
