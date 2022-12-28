@@ -163,7 +163,7 @@ export default function AdminItemFormView() {
 
   return (
     <div className={styles.container}>
-      <form className={styles.afiles} name="files" onSubmit={upload}>
+      <form className={styles.files} name="files" onSubmit={upload}>
         { alert && <Alert style={{ marginBottom: '1.5rem' }} {...alert} /> }
         <h1>{ item ? 'Perbarui' : 'Tambah' } Item</h1>
         { files.cover &&
@@ -190,9 +190,29 @@ export default function AdminItemFormView() {
           onChange={changeFileMedia}
         />
         <small>{ files.media }</small>
-        <div data-div="buttons">
-          <Button type="submit">Unggah</Button>
+        { files.upload &&
+        <div className={styles.buttons}>
+          { files.cover &&
+          <Button
+            className={styles.smallButton}
+            href={Axios.getUri({ url: '/files/cover/' + files?.cover })}
+            download={files.cover}
+          >
+            Unduh Cover
+          </Button>
+          }
+          { files.media &&
+            <Button
+              className={styles.smallButton}
+              href={Axios.getUri({ url: '/files/media/' + files?.media })}
+              download={files.media}
+            >
+              Unduh Media
+            </Button>
+          }
         </div>
+        }
+        <Button type="submit">Unggah File</Button>
         <hr />
       </form>
       <form className={styles.details} name="detail" onSubmit={submit}>
@@ -281,7 +301,7 @@ export default function AdminItemFormView() {
           <Button type="submit">{ item ? 'Perbarui': 'Tambah' } Item</Button>
           { item &&
           <>
-            <Button style={{ background: '#999' }} type="reset">Reset</Button>
+            <Button style={{ background: 'slategray' }} type="reset">Reset</Button>
             <Button style={{ background: 'orangered' }} onClick={deleteItem}>
               Hapus
             </Button>
