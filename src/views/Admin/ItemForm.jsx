@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useLoaderData } from 'react-router-dom';
+import prettyBytes from 'pretty-bytes';
 import Axios from '@/func/Axios';
 import Alert from '@/components/Alert';
 import Button from '@/components/Button';
@@ -20,12 +21,17 @@ export default function AdminItemFormView() {
   const [files, setFiles] = useState({
     cover: item?.cover,
     media: item?.media,
-    upload: !!item
+    upload: Boolean(item)
   });
 
   const [categories, setCategories] = useState(
     item?.Categories.map((c) => c.name)
   );
+
+  const [uploadProgress, setUploadProgress] = useState({
+    bytes: 0,
+    progress: 0,
+  });
 
   const [alert, setAlert] = useState(false);
   const navigate = useNavigate();
@@ -98,7 +104,11 @@ export default function AdminItemFormView() {
     };
 
     Axios
-      .post('/files', data)
+      .post('/files', data, {
+        onUploadProgress: ({ bytes, progress}) => {
+          setUploadProgress({ bytes, progress });
+        }
+      })
       .then(() => {
         setFiles({ ...names, upload: Boolean(names.cover && names.media) });
         setAlert({ text: 'File sukses diunggah' });
@@ -117,6 +127,7 @@ export default function AdminItemFormView() {
       })
       .catch(() => setAlert({ text: 'File gagal diunggah', error: true }));
   }
+
   function submit(e) {
     e.preventDefault();
 
@@ -210,6 +221,13 @@ export default function AdminItemFormView() {
               Unduh Media
             </Button>
           }
+        </div>
+        }
+        { Boolean(uploadProgress.bytes) &&
+        <div className={styles.progressContainer}>
+          <span>{ prettyBytes(Math.round(uploadProgress.bytes / uploadProgress.progress)) }</span>
+          <progress value={uploadProgress.progress} max="1"></progress>
+          <span>{ prettyBytes(uploadProgress.bytes) }</span>
         </div>
         }
         <Button type="submit">Unggah File</Button>

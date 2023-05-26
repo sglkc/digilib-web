@@ -22,6 +22,8 @@
 }
 
 .files, .details {
+  display: flex;
+  flex-direction: column;
   flex: 1 1;
   width: 100%;
   scroll-margin-top: 5.5rem;
@@ -31,6 +33,12 @@
   max-width: 300px;
 
   & > hr { display: none; }
+}
+
+.progressContainer {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
 }
 
 .buttons {
