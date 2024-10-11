@@ -6,7 +6,7 @@ import className from './Auth.module.css';
 export default function AuthLayout({ children, style }) {
   const { title } = useLoaderData();
 
-  useEffect(() => void(document.title = `${title} | Jalan Rahmat`), [title]);
+  useEffect(() => void(document.title = `${title} | Digital Library`), [title]);
 
   return (
     <Authenticate>

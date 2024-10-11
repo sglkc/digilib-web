@@ -8,7 +8,6 @@ import Button from '@/components/Button';
 import DateInput from '@/components/DateInput';
 import Input from '@/components/Input';
 import PasswordInput from '@/components/PasswordInput';
-import RegisterPolicy from '@/components/Auth/Policy';
 import styles from './Register.module.css';
 
 export default function RegisterView() {
@@ -39,10 +38,6 @@ export default function RegisterView() {
 
   return (
     <AuthLayout>
-      <div className={styles.policy}>
-        <img className={styles.logo} src={Logo} alt="logo" />
-        <RegisterPolicy />
-      </div>
       <form className={styles.column} onSubmit={submit}>
         <h1 className="text-primary">Daftar</h1>
         <Input type="text" name="nama" placeholder="Nama Lengkap" required />
@@ -55,9 +50,8 @@ export default function RegisterView() {
         <label className={styles.policies}>
           <input className={styles.input} type="checkbox" required />
           <span>
-            Dengan ini menyatakan Anda setuju, Anda menerima segala isi
-            <b> Syarat Penggunaan dan Kebijakan Privasi </b>
-            Jalan Rahmat
+            Saya berjanji untuk tidak menyebarluaskan konten apapun dari
+            dalam aplikasi ini
           </span>
         </label>
         { alert && <Alert text={alert} error="true" /> }

@@ -16,7 +16,7 @@ export default function DefaultLayout({ children, isAdmin }) {
   const setNavbar = (bool) => dispatch(toggleNavbar({ open: bool }));
 
   useEffect(() => {
-    if (data && data.title) document.title = `${data.title} | Jalan Rahmat`;
+    if (data && data.title) document.title = `${data.title} | Digital Library`;
   }, [data]);
 
   return (

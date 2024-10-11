@@ -8,8 +8,13 @@ export default function Book({ media }) {
   const embed = 'https://docs.google.com/gview?embedded=true&url=';
   const mediaUrl = Axios.getUri({
     url: '/files/media/' + media,
-    params: { timestamp: Date.now() }
+    params: {
+      token: '123123213',
+      timestamp: Date.now()
+    }
   });
+
+  // TODO: token
 
   function toggleOpen() {
     const scroller = document.getElementById('scroller');

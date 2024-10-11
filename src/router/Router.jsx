@@ -17,8 +17,6 @@ import JelajahiView from '@/views/Jelajahi/Jelajahi';
 import NotifikasiView from '@/views/Notifikasi';
 import RiwayatView from '@/views/Riwayat';
 import TandaiView from '@/views/Tandai';
-import TentangView from '@/views/Tentang';
-import UmpanBalikView from '@/views/UmpanBalik';
 import PencarianView from '@/views/Pencarian';
 import { editItem, getItem } from './Loader';
 
@@ -93,16 +91,6 @@ const router = createBrowserRouter([
         path: '/history',
         element: <RiwayatView />,
         loader: () => ({ title: 'Riwayat', search: true })
-      },
-      {
-        path: '/feedback',
-        element: <UmpanBalikView />,
-        loader: () => ({ title: 'Umpan Balik' })
-      },
-      {
-        path: '/about',
-        element: <TentangView />,
-        loader: () => ({ title: 'Tentang' })
       },
       {
         path: '/*',

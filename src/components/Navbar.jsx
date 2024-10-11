@@ -43,18 +43,6 @@ const userList = [
       text: 'Riwayat'
     },
   ],
-  [
-    {
-      to: '/feedback',
-      icon: mdiChatProcessingOutline,
-      text: 'Umpan Balik'
-    },
-    {
-      to: '/about',
-      icon: mdiInformationOutline,
-      text: 'Tentang Aplikasi'
-    },
-  ],
 ];
 
 const adminList = [
