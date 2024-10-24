@@ -17,7 +17,7 @@ export default function Authenticate({ isAdmin, children, loggedIn }) {
   }
 
   useEffect(() => {
-    if (!document.cookie.length) return redirect();
+    // if (!document.cookie.length) return redirect();
 
     Axios
       .get('/user')
